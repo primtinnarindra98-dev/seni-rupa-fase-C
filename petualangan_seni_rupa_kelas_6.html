@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Seni Rupa Kelas 6 SD/MI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FFD166',
+                        brandPink: '#EF476F',
+                        brandBlue: '#118AB2',
+                        brandGreen: '#06D6A0',
+                        brandDark: '#073B4C',
+                        brandPurple: '#8338EC'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f6f8fd 0%, #e1e9ff 100%);
+            min-height: 100vh;
+            user-select: none;
+        }
+        .heading-font {
+            font-family: 'Fredoka', cursive;
+        }
+        .btn-bounce {
+            transition: all 0.2s ease;
+        }
+        .btn-bounce:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .btn-bounce:active {
+            transform: translateY(1px) scale(0.98);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+        .avatar-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .pulse-light {
+            animation: pulseLight 2s infinite;
+        }
+        @keyframes pulseLight {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #118AB2;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-brandDark flex flex-col min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white border-b-4 border-brandBlue sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="goToHome()">
+                <div class="w-10 h-10 bg-brandYellow rounded-full flex items-center justify-center text-2xl shadow">
+                    🎨
+                </div>
+                <div>
+                    <h1 class="heading-font text-xl md:text-2xl font-bold text-brandDark leading-tight">PETUALANGAN SENI RUPA</h1>
+                    <p class="text-xs text-gray-500 font-semibold">Kelas 6 SD/MI • Semester 1</p>
+                </div>
+            </div>
+
+            <div id="userBadge" class="hidden flex items-center gap-2 bg-blue-50 border-2 border-brandBlue px-3 py-1.5 rounded-full">
+                <i class="fa-solid fa-user-ninja text-brandBlue text-lg"></i>
+                <span id="badgeStudentName" class="font-bold text-sm text-brandBlue">Siswa</span>
+                <span class="bg-brandYellow text-xs font-black px-2 py-0.5 rounded-full text-brandDark ml-1" id="badgeScore">0 PTS</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+
+        <!-- SECTION 1: WELCOME SCREEN -->
+        <section id="secWelcome" class="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden my-auto border-4 border-white shadow-2xl">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-brandYellow rounded-full opacity-30 blur-2xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-brandPink rounded-full opacity-30 blur-2xl"></div>
+
+            <!-- Avatar Pemimpin -->
+            <div class="w-32 h-32 mx-auto mb-4 relative avatar-float">
+                <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow-xl">
+                    <!-- Circle BG -->
+                    <circle cx="60" cy="60" r="55" fill="#FFD166" stroke="#118AB2" stroke-width="4"/>
+                    <!-- Character Boy Artist -->
+                    <!-- Cap -->
+                    <path d="M 35 45 Q 60 20 85 45 Z" fill="#EF476F"/>
+                    <circle cx="60" cy="23" r="6" fill="#073B4C"/>
+                    <!-- Face -->
+                    <ellipse cx="60" cy="58" rx="28" ry="25" fill="#FFE0BD"/>
+                    <!-- Eyes -->
+                    <circle cx="50" cy="55" r="3.5" fill="#073B4C"/>
+                    <circle cx="70" cy="55" r="3.5" fill="#073B4C"/>
+                    <circle cx="51.5" cy="53.5" r="1.2" fill="#FFF"/>
+                    <circle cx="71.5" cy="53.5" r="1.2" fill="#FFF"/>
+                    <!-- Smile -->
+                    <path d="M 50 68 Q 60 76 70 68" fill="none" stroke="#073B4C" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Cheeks -->
+                    <circle cx="44" cy="63" r="4" fill="#FF8A8A" opacity="0.6"/>
+                    <circle cx="76" cy="63" r="4" fill="#FF8A8A" opacity="0.6"/>
+                    <!-- Clothes -->
+                    <path d="M 32 83 Q 60 75 88 83 L 95 115 L 25 115 Z" fill="#118AB2"/>
+                    <!-- Apron -->
+                    <path d="M 42 85 L 78 85 L 74 115 L 46 115 Z" fill="#06D6A0"/>
+                    <!-- Paint Splatters on Apron -->
+                    <circle cx="52" cy="95" r="3" fill="#EF476F"/>
+                    <circle cx="68" cy="102" r="2.5" fill="#FFD166"/>
+                    <!-- Paintbrush held -->
+                    <rect x="80" y="55" width="4" height="35" rx="2" fill="#8D5B4C" transform="rotate(-25 80 55)"/>
+                    <path d="M 88 40 Q 92 48 88 52 Z" fill="#EF476F" transform="rotate(-25 80 55)"/>
+                </svg>
+            </div>
+
+            <h1 class="heading-font text-3xl md:text-5xl font-extrabold text-brandDark mb-2">
+                🎨 PETUALANGAN SENI RUPA
+            </h1>
+            <p class="text-brandBlue font-bold text-lg md:text-xl mb-6">
+                Media Pembelajaran Interaktif Kelas 6 SD/MI
+            </p>
+
+            <!-- Grid Ilustrasi Seni -->
+            <div class="flex justify-center gap-4 mb-8 text-2xl md:text-3xl text-gray-700 bg-blue-50/70 p-3 rounded-2xl border border-blue-100 max-w-md mx-auto">
+                <span title="Kuas">🖌️</span>
+                <span title="Palet">🎨</span>
+                <span title="Makrame">🧶</span>
+                <span title="Tali">🪢</span>
+                <span title="Anyaman">🧺</span>
+                <span title="Pensil">✏️</span>
+            </div>
+
+            <!-- Form Nama -->
+            <div class="max-w-md mx-auto space-y-4">
+                <div class="text-left">
+                    <label for="studentNameInput" class="block font-bold text-sm text-gray-700 mb-1 pl-1">
+                        <i class="fa-solid fa-signature text-brandPink mr-1"></i> Masukkan Nama Kamu:
+                    </label>
+                    <input type="text" id="studentNameInput" placeholder="Contoh: Budi Pratama" 
+                        class="w-full px-5 py-3.5 rounded-2xl border-2 border-brandBlue focus:outline-none focus:ring-4 focus:ring-blue-200 text-lg font-bold text-brandDark shadow-inner">
+                </div>
+
+                <button onclick="submitName()" class="w-full bg-brandGreen hover:bg-emerald-500 text-white font-extrabold text-xl py-4 px-6 rounded-2xl border-b-4 border-emerald-700 shadow-lg btn-bounce flex items-center justify-center gap-3">
+                    <span>🎨 MULAI PETUALANGAN</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INSTRUCTIONS -->
+        <section id="secInstructions" class="hidden glass-card rounded-3xl p-6 md:p-8 border-4 border-white shadow-2xl">
+            <div class="flex items-center gap-4 border-b-2 border-gray-100 pb-4 mb-6">
+                <div class="w-16 h-16 bg-brandYellow rounded-2xl flex-shrink-0 flex items-center justify-center text-3xl shadow">
+                    🧭
+                </div>
+                <div>
+                    <h2 class="heading-font text-2xl md:text-3xl font-bold text-brandDark">Petunjuk Permainan</h2>
+                    <p class="text-gray-600 text-sm">Pahami aturan petualanganmu sebelum memasuki dunia seni!</p>
+                </div>
+            </div>
+
+            <!-- Dialogue Box Character -->
+            <div class="bg-blue-50 border-2 border-brandBlue rounded-2xl p-4 mb-6 flex items-start gap-4">
+                <div class="w-12 h-12 flex-shrink-0">
+                    <svg viewBox="0 0 120 120" class="w-full h-full">
+                        <circle cx="60" cy="60" r="55" fill="#FFD166"/>
+                        <ellipse cx="60" cy="58" rx="28" ry="25" fill="#FFE0BD"/>
+                        <circle cx="50" cy="55" r="3.5" fill="#073B4C"/>
+                        <circle cx="70" cy="55" r="3.5" fill="#073B4C"/>
+                        <path d="M 50 68 Q 60 76 70 68" fill="none" stroke="#073B4C" stroke-width="3"/>
+                    </svg>
+                </div>
+                <div>
+                    <p id="greetingText" class="font-bold text-brandDark text-base md:text-lg mb-1">
+                        Halo, Seniman Muda!
+                    </p>
+                    <p class="text-sm text-gray-700">
+                        Saya akan memandumu menjelajahi 3 dunia seni rupa yang sangat menakjubkan. Yuk, baca petunjuknya dulu!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">1</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Menjelajahi 3 dunia seni Rupa Semester 1.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">2</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mempelajari materi tiap bab dengan visual menarik.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">3</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Melihat contoh dan contoh gambar ilustrasi.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">4</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mencoba tantangan & aktivitas interaktif.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">5</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mengerjakan 50 soal kuis mengevaluasi pemahaman.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">6</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mendapatkan poin 20 untuk setiap jawaban benar.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">7</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mendapatkan pembahasan lengkap setiap soal.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">8</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Dapat membuka kembali materi saat kuis berlangsung.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <span class="bg-brandPink text-white font-black w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0">9</span>
+                    <p class="text-xs md:text-sm font-semibold text-gray-700">Mendapatkan Sertifikat Digital Seni Rupa!</p>
+                </div>
+            </div>
+
+            <button onclick="goToMap()" class="w-full bg-brandBlue hover:bg-blue-600 text-white font-extrabold text-xl py-4 rounded-2xl border-b-4 border-blue-800 shadow-lg btn-bounce flex items-center justify-center gap-3">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>BUKA PETA PETUALANGAN</span>
+            </button>
+        </section>
+
+        <!-- SECTION 3: MAP LEVEL SELECT -->
+        <section id="secMap" class="hidden glass-card rounded-3xl p-6 md:p-8 border-4 border-white shadow-2xl">
+            <div class="text-center mb-6">
+                <h2 class="heading-font text-3xl font-extrabold text-brandDark">🗺️ Peta Petualangan Seni</h2>
+                <p class="text-gray-600 font-semibold text-sm">Pilih dunia yang ingin kamu pelajari atau langsung menuju kuis!</p>
+            </div>
+
+            <!-- Map Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Level 1 -->
+                <div onclick="openLesson(1)" class="bg-gradient-to-b from-amber-50 to-orange-100 rounded-3xl p-5 border-4 border-amber-300 shadow-md hover:shadow-xl transition cursor-pointer btn-bounce relative flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 bg-brandYellow text-brandDark text-xs font-black px-3 py-1 rounded-full border border-amber-400">
+                        LEVEL 1
+                    </div>
+                    <div class="text-center py-4">
+                        <div class="w-20 h-20 mx-auto bg-amber-200 rounded-2xl flex items-center justify-center text-4xl mb-3 shadow-inner">
+                            🎨
+                        </div>
+                        <h3 class="heading-font text-lg font-bold text-amber-900 leading-snug">
+                            GALERI UNSUR, PRINSIP & RITME
+                        </h3>
+                        <p class="text-xs text-amber-800 mt-2">Mengenal garis, warna, keseimbangan, dan pengulangan ritme.</p>
+                    </div>
+                    <button class="w-full bg-amber-500 text-white font-bold py-2.5 rounded-xl border-b-2 border-amber-700 text-sm">
+                        Eksplorasi Level 1
+                    </button>
+                </div>
+
+                <!-- Level 2 -->
+                <div onclick="openLesson(2)" class="bg-gradient-to-b from-pink-50 to-rose-100 rounded-3xl p-5 border-4 border-pink-300 shadow-md hover:shadow-xl transition cursor-pointer btn-bounce relative flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 bg-brandPink text-white text-xs font-black px-3 py-1 rounded-full border border-pink-400">
+                        LEVEL 2
+                    </div>
+                    <div class="text-center py-4">
+                        <div class="w-20 h-20 mx-auto bg-pink-200 rounded-2xl flex items-center justify-center text-4xl mb-3 shadow-inner">
+                            🧶
+                        </div>
+                        <h3 class="heading-font text-lg font-bold text-rose-900 leading-snug">
+                            DESA MAKRAME
+                        </h3>
+                        <p class="text-xs text-rose-800 mt-2">Belajar ikatan, simpul kepala, simpul tunggal, dan ganda.</p>
+                    </div>
+                    <button class="w-full bg-brandPink text-white font-bold py-2.5 rounded-xl border-b-2 border-rose-700 text-sm">
+                        Eksplorasi Level 2
+                    </button>
+                </div>
+
+                <!-- Level 3 -->
+                <div onclick="openLesson(3)" class="bg-gradient-to-b from-emerald-50 to-teal-100 rounded-3xl p-5 border-4 border-emerald-300 shadow-md hover:shadow-xl transition cursor-pointer btn-bounce relative flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 bg-brandGreen text-white text-xs font-black px-3 py-1 rounded-full border border-emerald-400">
+                        LEVEL 3
+                    </div>
+                    <div class="text-center py-4">
+                        <div class="w-20 h-20 mx-auto bg-emerald-200 rounded-2xl flex items-center justify-center text-4xl mb-3 shadow-inner">
+                            🧺
+                        </div>
+                        <h3 class="heading-font text-lg font-bold text-emerald-900 leading-snug">
+                            KAMPUNG ANYAMAN
+                        </h3>
+                        <p class="text-xs text-emerald-800 mt-2">Mengenal bahan, pola anyaman tunggal/ganda & suvenir.</p>
+                    </div>
+                    <button class="w-full bg-brandGreen text-white font-bold py-2.5 rounded-xl border-b-2 border-emerald-700 text-sm">
+                        Eksplorasi Level 3
+                    </button>
+                </div>
+            </div>
+
+            <!-- Start Quiz Direct Button -->
+            <div class="bg-purple-50 p-6 rounded-3xl border-2 border-purple-200 text-center">
+                <h3 class="heading-font text-xl font-bold text-purple-900 mb-2">Sudah Siap Menguji Kemampuanmu?</h3>
+                <p class="text-xs md:text-sm text-purple-700 mb-4">Uji pengetahuan seni rupamu dalam 50 Soal Kuis Tantangan!</p>
+                <button onclick="startQuiz()" class="bg-brandPurple hover:bg-purple-700 text-white font-extrabold text-xl py-3.5 px-8 rounded-2xl border-b-4 border-purple-900 shadow-lg btn-bounce inline-flex items-center gap-3">
+                    <i class="fa-solid fa-trophy text-brandYellow"></i>
+                    <span>MULAI UJIAN KUIS 50 SOAL</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LESSON MATERIALS -->
+        <section id="secLesson" class="hidden glass-card rounded-3xl p-6 md:p-8 border-4 border-white shadow-2xl">
+            <!-- Header Lesson -->
+            <div class="flex items-center justify-between border-b-2 border-gray-100 pb-4 mb-6">
+                <button onclick="goToMap()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Peta Level
+                </button>
+                <span id="lessonBabTitle" class="heading-font font-bold text-brandBlue text-base md:text-lg">BAB 1</span>
+                <button id="btnReturnQuiz" onclick="returnToQuiz()" class="hidden bg-brandYellow hover:bg-amber-400 text-brandDark font-extrabold px-4 py-2 rounded-xl text-sm border-b-2 border-amber-600 flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-rotate-left"></i> Kembali ke Soal Kuis
+                </button>
+            </div>
+
+            <!-- BAB 1 CONTENT -->
+            <div id="bab1Content" class="hidden space-y-6">
+                <div class="text-center bg-amber-50 p-6 rounded-3xl border-2 border-amber-200">
+                    <h2 class="heading-font text-2xl md:text-3xl font-extrabold text-amber-900 mb-2">
+                        🎨 BAB 1: UNSUR, PRINSIP & RITME SENI RUPA
+                    </h2>
+                    <p class="text-sm text-amber-800">Mari pelajari pondasi utama karya seni rupa dua dan tiga dimensi.</p>
+                </div>
+
+                <!-- Grid Unsur -->
+                <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                    <h3 class="heading-font font-bold text-xl text-brandBlue mb-3 flex items-center gap-2">
+                        <span>1. Unsur-Unsur Seni Rupa</span>
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                        <div class="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                            <span class="font-bold text-brandBlue">Garis:</span> Goresan atau batas limit suatu benda, ruang, warna, tekstur.
+                        </div>
+                        <div class="p-3 bg-pink-50 rounded-xl border border-pink-100">
+                            <span class="font-bold text-brandPink">Bentuk:</span> Wujud yang memiliki dimensi (geometris & non-geometris).
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                            <span class="font-bold text-amber-700">Warna:</span> Kesan pantulan cahaya (Primer, Sekunder, Tersier).
+                        </div>
+                        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                            <span class="font-bold text-emerald-700">Tekstur:</span> Sifat permukaan benda (kasar, halus, licin).
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                            <span class="font-bold text-purple-700">Gelap Terang:</span> Tingkat pencahayaan untuk memberi impresi ruang/volume.
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-700">Ruang:</span> Kesan kedalaman nyata atau semu pada karya.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prinsip & Ritme -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <h3 class="heading-font font-bold text-lg text-brandPink mb-2">2. Prinsip Seni Rupa</h3>
+                        <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+                            <li><strong>Keseimbangan (Balance):</strong> Kesan sama berat antar bagian (Simetris, Asimetris, Radial).</li>
+                            <li><strong>Kesatuan (Unity):</strong> Perpaduan unsur sehingga menjadi satu kesatuan harmonis.</li>
+                            <li><strong>Penekanan (Pusat Perhatian/Emphasis):</strong> Bagian karya yang paling menonjol.</li>
+                            <li><strong>Proporsi:</strong> Perbandingan ukuran antar bagian dengan keseluruhan.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <h3 class="heading-font font-bold text-lg text-brandGreen mb-2">3. Ritme (Irama/Pengulangan)</h3>
+                        <p class="text-sm text-gray-700 mb-2">
+                            <strong>Ritme</strong> adalah pengulangan unsur seni rupa (seperti garis, bentuk, atau warna) secara teratur dan berkesinambungan sehingga menciptakan kesan gerak.
+                        </p>
+                        <!-- Visual Ritme SVG -->
+                        <div class="bg-emerald-50 p-3 rounded-xl flex items-center justify-around border border-emerald-200">
+                            <svg width="180" height="40" viewBox="0 0 180 40">
+                                <!-- Repeating pattern -->
+                                <circle cx="20" cy="20" r="12" fill="#EF476F"/>
+                                <circle cx="50" cy="20" r="8" fill="#FFD166"/>
+                                <circle cx="80" cy="20" r="12" fill="#EF476F"/>
+                                <circle cx="110" cy="20" r="8" fill="#FFD166"/>
+                                <circle cx="140" cy="20" r="12" fill="#EF476F"/>
+                                <circle cx="170" cy="20" r="8" fill="#FFD166"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAB 2 CONTENT -->
+            <div id="bab2Content" class="hidden space-y-6">
+                <div class="text-center bg-pink-50 p-6 rounded-3xl border-2 border-pink-200">
+                    <h2 class="heading-font text-2xl md:text-3xl font-extrabold text-rose-900 mb-2">
+                        🧶 BAB 2: IKATAN DAN SIMPUL DALAM MAKRAME
+                    </h2>
+                    <p class="text-sm text-rose-800">Seni kerajinan simpul menyimpul tali menjadi karya hias maupun guna.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+                    <div>
+                        <h3 class="heading-font font-bold text-xl text-brandPink mb-2">Pengertian Makrame</h3>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong>Makrame</strong> adalah seni kerajinan tangan membuat jalinan atau simpul-simpul tali hingga membentuk berbagai hiasan atau barang berguna seperti gantungan pot, tas, dan gelang.
+                        </p>
+                    </div>
+
+                    <h3 class="heading-font font-bold text-lg text-brandDark pt-2">Jenis Simpul Utama Makrame:</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Simpul Kepala -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <rect x="5" y="10" width="50" height="6" fill="#8D5B4C"/>
+                                <path d="M 20 16 C 15 35 25 35 20 55 M 30 16 C 35 35 25 35 30 55" stroke="#EF476F" stroke-width="4" fill="none"/>
+                                <ellipse cx="25" cy="25" rx="8" ry="5" fill="none" stroke="#EF476F" stroke-width="3"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-brandPink text-sm">Simpul Kepala (Lark's Head)</h4>
+                                <p class="text-xs text-gray-600">Simpul awal untuk mengikatkan tali pada kayu/gantungan pengerjaan.</p>
+                            </div>
+                        </div>
+
+                        <!-- Simpul Tunggal -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <path d="M 15 5 L 15 55 M 45 5 L 45 55" stroke="#CCC" stroke-width="3"/>
+                                <path d="M 10 20 C 30 10 50 30 20 40 C 0 30 40 10 50 20" stroke="#118AB2" stroke-width="4" fill="none"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-brandBlue text-sm">Simpul Tunggal (Spiral)</h4>
+                                <p class="text-xs text-gray-600">Dibuat berturut-turut satu arah sehingga hasilnya terpilin/melilit spiral.</p>
+                            </div>
+                        </div>
+
+                        <!-- Simpul Ganda -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <rect x="18" y="10" width="24" height="40" rx="5" fill="#FFD166" opacity="0.4"/>
+                                <path d="M 10 20 C 30 5 50 35 10 40" stroke="#06D6A0" stroke-width="4" fill="none"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-brandGreen text-sm">Simpul Ganda (Square Knot)</h4>
+                                <p class="text-xs text-gray-600">Simpul berpasangan bergantian kiri & kanan sehingga rata/gepeng.</p>
+                            </div>
+                        </div>
+
+                        <!-- Simpul Mati -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <circle cx="30" cy="30" r="18" fill="none" stroke="#8338EC" stroke-width="5" stroke-dasharray="10 5"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-purple-700 text-sm">Simpul Mati</h4>
+                                <p class="text-xs text-gray-600">Simpul kuat yang digunakan untuk mengunci ujung ikatan agar tidak lepas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAB 3 CONTENT -->
+            <div id="bab3Content" class="hidden space-y-6">
+                <div class="text-center bg-emerald-50 p-6 rounded-3xl border-2 border-emerald-200">
+                    <h2 class="heading-font text-2xl md:text-3xl font-extrabold text-emerald-900 mb-2">
+                        🧺 BAB 3: ANEKA ANYAMAN UNTUK SUVENIR
+                    </h2>
+                    <p class="text-sm text-emerald-800">Seni menyilang-nyilangkan lembaran bahan hingga membentuk pola karya guna.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+                    <div>
+                        <h3 class="heading-font font-bold text-xl text-brandGreen mb-2">Pengertian Anyaman</h3>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong>Anyaman</strong> adalah teknik membuat karya kerajinan dengan cara menyilangkan pita/pita bahan (lungsi dan pakan) secara berselang-seling.
+                        </p>
+                    </div>
+
+                    <!-- Bahan Anyaman -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-sm mb-1">🌿 Bahan Alam Anyaman</h4>
+                            <p class="text-xs text-gray-700">Bambu, rotan, daun pandan, janur, eceng gondok, serat pita alam.</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-2xl border border-blue-200">
+                            <h4 class="font-bold text-blue-900 text-sm mb-1">✂️ Bahan Sintetis/Buatan</h4>
+                            <p class="text-xs text-gray-700">Pita plastik, kertas warna, kain perca, karet, pita sintetis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pola Anyaman -->
+                    <h3 class="heading-font font-bold text-lg text-brandDark pt-2">Pola Dasar Anyaman:</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Pola Tunggal 1:1 -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <!-- Grid 1:1 -->
+                                <rect x="0" y="0" width="60" height="60" fill="#E2E8F0"/>
+                                <rect x="0" y="0" width="30" height="30" fill="#118AB2"/>
+                                <rect x="30" y="30" width="30" height="30" fill="#118AB2"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-brandBlue text-sm">Pola Tunggal (1:1)</h4>
+                                <p class="text-xs text-gray-600">Pola paling sederhana. Selang-seling 1 pita pakan di atas & 1 di bawah lungsi.</p>
+                            </div>
+                        </div>
+
+                        <!-- Pola Ganda 2:2 -->
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex items-center gap-4">
+                            <svg width="60" height="60" viewBox="0 0 60 60" class="flex-shrink-0">
+                                <rect x="0" y="0" width="60" height="60" fill="#E2E8F0"/>
+                                <rect x="0" y="0" width="30" height="60" fill="#EF476F"/>
+                                <rect x="15" y="15" width="30" height="30" fill="#FFD166"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-brandPink text-sm">Pola Ganda (2:2 / Kepang)</h4>
+                                <p class="text-xs text-gray-600">Disilangkan berselang-seling 2 pita pakan melompati 2 pita lungsi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suvenir -->
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200">
+                        <h4 class="font-bold text-amber-900 text-sm mb-1">🎁 Produk Suvenir dari Anyaman</h4>
+                        <p class="text-xs text-amber-800">
+                            Gantungan kunci, tempat pensil, kipas angin tangan, dompet kecil, pembatas buku, dan keranjang hias.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz CTA in Lesson -->
+            <div class="mt-8 text-center">
+                <button onclick="startQuiz()" class="bg-brandGreen hover:bg-emerald-600 text-white font-extrabold text-lg py-3.5 px-8 rounded-2xl border-b-4 border-emerald-800 shadow-lg btn-bounce inline-flex items-center gap-3">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>MULAI KERJAKAN KUIS 50 SOAL NOW</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 5: QUIZ SCREEN -->
+        <section id="secQuiz" class="hidden glass-card rounded-3xl p-5 md:p-8 border-4 border-white shadow-2xl">
+            <!-- Quiz Status Header -->
+            <div class="flex flex-wrap items-center justify-between gap-2 bg-blue-50/80 p-3.5 rounded-2xl border border-blue-200 mb-5">
+                <div class="flex items-center gap-2">
+                    <span id="quizNumBadge" class="bg-brandBlue text-white font-black text-sm px-3 py-1 rounded-xl">
+                        SOAL 1 / 50
+                    </span>
+                    <span id="quizBabCategory" class="text-xs font-bold text-brandDark bg-white px-2.5 py-1 rounded-lg border border-gray-200">
+                        Bab 1: Unsur & Prinsip
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <span class="text-xs text-gray-500 font-bold block">Skor Kamu</span>
+                        <span id="quizScoreText" class="font-black text-brandGreen text-base md:text-lg">0 PTS</span>
+                    </div>
+                    <button onclick="openLessonFromQuiz()" class="bg-brandYellow hover:bg-amber-400 text-brandDark font-bold px-3 py-1.5 rounded-xl text-xs border-b-2 border-amber-600 shadow btn-bounce flex items-center gap-1">
+                        <i class="fa-solid fa-book-open"></i> 📚 BUKA MATERI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-6 overflow-hidden">
+                <div id="quizProgressBar" class="bg-brandGreen h-3 rounded-full transition-all duration-300" style="width: 2%;"></div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white p-5 md:p-6 rounded-2xl border border-gray-200 shadow-sm mb-6">
+                <!-- SVG Diagram / Illustration Container (If applicable) -->
+                <div id="quizImageContainer" class="hidden mb-4 p-4 bg-gray-50 rounded-2xl border border-gray-200 text-center flex justify-center items-center">
+                    <!-- SVG populated dynamically -->
+                </div>
+
+                <h3 id="quizQuestionText" class="font-extrabold text-brandDark text-base md:text-lg leading-relaxed mb-4">
+                    Pertanyaan akan muncul di sini...
+                </h3>
+
+                <!-- Options Grid -->
+                <div id="quizOptionsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <!-- Options injected via JS -->
+                </div>
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="quizFeedbackBox" class="hidden p-4 rounded-2xl mb-6 border-2">
+                <div class="flex items-start gap-3">
+                    <div id="feedbackIcon" class="w-10 h-10 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 font-bold">
+                        ✓
+                    </div>
+                    <div>
+                        <h4 id="feedbackTitle" class="font-extrabold text-base mb-1">✓ BENAR!</h4>
+                        <p id="feedbackExplanation" class="text-xs md:text-sm text-gray-700 leading-relaxed mb-3">
+                            Pembahasan singkat...
+                        </p>
+                        <button id="btnNextQuestion" onclick="nextQuestion()" class="bg-brandBlue hover:bg-blue-600 text-white font-extrabold px-5 py-2.5 rounded-xl text-sm border-b-2 border-blue-800 btn-bounce flex items-center gap-2">
+                            <span>➡ LANJUT KE SOAL BERIKUTNYA</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FINAL RESULTS & CERTIFICATE -->
+        <section id="secResult" class="hidden glass-card rounded-3xl p-6 md:p-10 border-4 border-white shadow-2xl text-center">
+            <div class="w-24 h-24 mx-auto mb-3 bg-brandYellow rounded-full flex items-center justify-center text-5xl shadow-xl avatar-float">
+                🏆
+            </div>
+            <h2 class="heading-font text-3xl md:text-4xl font-extrabold text-brandDark mb-1">
+                🎉 PETUALANGAN SELESAI! 🎉
+            </h2>
+            <p id="resultStudentGreeting" class="text-brandBlue font-bold text-lg mb-6">
+                Selamat, Seniman Muda!
+            </p>
+
+            <!-- Score Summary Cards -->
+            <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-lg mx-auto mb-6">
+                <div class="bg-white p-3.5 rounded-2xl border-2 border-brandYellow shadow-sm">
+                    <span class="text-xs font-bold text-gray-500 block">Total Skor</span>
+                    <span id="finalScoreVal" class="heading-font text-xl md:text-2xl font-black text-amber-600">0</span>
+                    <span class="text-[10px] text-gray-400 block">/ 1000 Poin</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl border-2 border-brandGreen shadow-sm">
+                    <span class="text-xs font-bold text-gray-500 block">Jawaban Benar</span>
+                    <span id="finalCorrectVal" class="heading-font text-xl md:text-2xl font-black text-emerald-600">0</span>
+                    <span class="text-[10px] text-gray-400 block">/ 50 Soal</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl border-2 border-brandPink shadow-sm">
+                    <span class="text-xs font-bold text-gray-500 block">Jawaban Salah</span>
+                    <span id="finalWrongVal" class="heading-font text-xl md:text-2xl font-black text-rose-600">0</span>
+                    <span class="text-[10px] text-gray-400 block">/ 50 Soal</span>
+                </div>
+            </div>
+
+            <!-- Category Badge -->
+            <div class="mb-8">
+                <div id="badgeCategory" class="inline-block bg-brandPurple text-white font-extrabold px-6 py-2.5 rounded-full text-base md:text-lg shadow-lg">
+                    🏆 MASTER SENI RUPA
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                <button onclick="showCertificateModal()" class="bg-brandGreen hover:bg-emerald-600 text-white font-extrabold py-3.5 px-6 rounded-2xl border-b-4 border-emerald-800 shadow-md btn-bounce flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-award text-lg"></i>
+                    <span>LIHAT SERTIFIKAT</span>
+                </button>
+                <button onclick="restartQuiz()" class="bg-brandBlue hover:bg-blue-600 text-white font-extrabold py-3.5 px-6 rounded-2xl border-b-4 border-blue-800 shadow-md btn-bounce flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate text-lg"></i>
+                    <span>🔄 ULANGI KUIS</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CERTIFICATE MODAL -->
+    <div id="certModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl p-6 max-w-3xl w-full shadow-2xl relative my-8">
+            <button onclick="closeCertModal()" class="absolute top-4 right-4 bg-gray-200 hover:bg-gray-300 rounded-full w-9 h-9 flex items-center justify-center font-bold text-gray-700">
+                ✕
+            </button>
+            <h3 class="heading-font text-xl font-bold text-center text-brandDark mb-4">📜 Sertifikat Penghargaan Digital</h3>
+            
+            <!-- Certificate Render Area -->
+            <div class="overflow-x-auto mb-4 flex justify-center">
+                <canvas id="certCanvas" width="800" height="560" class="border-4 border-amber-300 rounded-xl shadow-md max-w-full h-auto"></canvas>
+            </div>
+
+            <div class="flex justify-center gap-4">
+                <button onclick="downloadCertificate()" class="bg-brandGreen hover:bg-emerald-600 text-white font-extrabold py-3 px-6 rounded-xl border-b-2 border-emerald-800 shadow btn-bounce flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i> Unduh Sertifikat (PNG)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 border-t border-gray-200 py-3 text-center text-xs font-bold text-gray-600 mt-auto">
+        Pengembang: Giga Inovation | 081329200985
+    </footer>
+
+    <script>
+        /* GLOBAL GAME STATE */
+        let studentName = "";
+        let currentScore = 0;
+        let currentQuestionIdx = 0;
+        let quizAnswers = []; // user answer history
+        let isFromQuiz = false; // flag for return to quiz feature
+
+        /* 50 SOAL SENI RUPA KELAS 6 SEMESTER 1 */
+        const quizData = [
+            /* BAB 1: UNSUR, PRINSIP & RITME (17 Soal: 0-16) */
+            {
+                bab: 1,
+                question: "1. Goresan awal yang menghubungkan satu titik dengan titik lainnya pada bidang gambar dinamakan...",
+                options: ["A. Warna", "B. Garis", "C. Tekstur", "D. Gelap Terang"],
+                answer: 1,
+                explanation: "Garis adalah goresan atau batas limit suatu benda, ruang, warna, maupun tekstur.",
+                svg: `<svg width="120" height="40"><line x1="10" y1="20" x2="110" y2="20" stroke="#118AB2" stroke-width="4" stroke-dasharray="5,5"/></svg>`
+            },
+            {
+                bab: 1,
+                question: "2. Pernyataan berikut yang PALING tepat menggambarkan pengertian dari unsur 'Warna Primer' adalah...",
+                options: ["A. Warna hasil campuran dua warna sekunder", "B. Warna dasar yang tidak dapat dihasilkan dari campuran warna lain", "C. Warna yang terlihat gelap dan redup", "D. Warna putih dan hitam saja"],
+                answer: 1,
+                explanation: "Warna primer adalah warna dasar utama (Merah, Kuning, Biru) yang tidak dapat dibentuk dari campuran warna lain."
+            },
+            {
+                bab: 1,
+                question: "3. Campuran antara warna merah dan warna kuning dengan perbandingan seimbang akan menghasilkan warna...",
+                options: ["A. Hijau", "B. Ungu", "C. Jingga / Oranye", "D. Cokelat"],
+                answer: 2,
+                explanation: "Warna Merah + Kuning menghasilkan warna Sekunder Jingga (Oranye)."
+            },
+            {
+                bab: 1,
+                question: "4. Perhatikan gambar ilustrasi visual berikut! Unsur seni rupa apa yang paling menonjol dari perbedaan tingkat pencahayaan benda?",
+                options: ["A. Tekstur", "B. Gelap Terang", "C. Garis lengkung", "D. Ruang sempit"],
+                answer: 1,
+                explanation: "Gelap terang timbul karena adanya perbedaan intensitas cahaya yang jatuh pada permukaan objek.",
+                svg: `<svg width="80" height="60"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" /></linearGradient></defs><rect width="80" height="60" fill="url(#grad1)" rx="8"/></svg>`
+            },
+            {
+                bab: 1,
+                question: "5. Sifat permukaan suatu benda yang dapat dirasakan oleh indera penglihatan dan rabaan disebut...",
+                options: ["A. Tekstur", "B. Proporsi", "C. Ritme", "D. Harmoni"],
+                answer: 0,
+                explanation: "Tekstur adalah nilai raba dari suatu permukaan karya seni rupa (kasar, halus, licin, dll)."
+            },
+            {
+                bab: 1,
+                question: "6. Prinsip seni rupa yang mengatur agar unsur-unsur visual tampak seimbang dan tidak berat sebelah disebut...",
+                options: ["A. Kesatuan", "B. Keseimbangan (Balance)", "C. Irama", "D. Penekanan"],
+                answer: 1,
+                explanation: "Keseimbangan (Balance) memberi kesan kesetabilan pada susunan unsur-unsur seni rupa."
+            },
+            {
+                bab: 1,
+                question: "7. Keseimbangan yang memiliki susunan bentuk dan ukuran yang sama persis antara bagian kiri dan kanan dinamakan keseimbangan...",
+                options: ["A. Asimetris", "B. Simetris", "C. Radial", "D. Sembarangan"],
+                answer: 1,
+                explanation: "Keseimbangan Simetris memiliki bobot visual yang sama persis di kedua sisi cermin.",
+                svg: `<svg width="100" height="50"><rect x="10" y="10" width="30" height="30" fill="#EF476F"/><line x1="50" y1="5" x2="50" y2="45" stroke="#CCC" stroke-width="2"/><rect x="60" y="10" width="30" height="30" fill="#EF476F"/></svg>`
+            },
+            {
+                bab: 1,
+                question: "8. Prinsip 'Penekanan' (Emphasis / Center of Interest) pada karya seni rupa berfungsi untuk...",
+                options: ["A. Membuat gambar terlihat samar", "B. Menarik perhatian utama pengamat pada fokus karya", "C. Menghilangkan warna pada bidang", "D. Menyamakan semua bentuk"],
+                answer: 1,
+                explanation: "Penekanan dibuat untuk menciptakan pusat perhatian (fokus utama) dalam sebuah karya seni."
+            },
+            {
+                bab: 1,
+                question: "9. Pengulangan unsur seni rupa seperti garis, bentuk, atau warna yang dilakukan secara berulang dan teratur dinamakan...",
+                options: ["A. Proporsi", "B. Ritme (Irama)", "C. Tekstur", "D. Dominasi"],
+                answer: 1,
+                explanation: "Ritme adalah pengulangan unsur visual secara teratur dan terus menerus sehingga tampak bergerak."
+            },
+            {
+                bab: 1,
+                question: "10. Manakah di bawah ini yang merupakan contoh pengulangan ritme dengan pola ukuran bertahap (Ritme Gradasi)?",
+                options: ["A. Segitiga besar, segitiga sedang, segitiga kecil berurutan", "B. Garis lurus acak", "C. Lingkaran hitam semua ukuran sama", "D. Satu titik saja"],
+                answer: 0,
+                explanation: "Ritme bertahap/gradasi ditandai dengan perubahan ukuran atau warna secara berurutan dan teratur."
+            },
+            {
+                bab: 1,
+                question: "11. Perbandingan ukuran yang serasi antara bagian-bagian objek dengan keseluruhan benda dinamakan...",
+                options: ["A. Proporsi", "B. Skala kasar", "C. Bayangan", "D. Kontras"],
+                answer: 0,
+                explanation: "Proporsi adalah perbandingan ideal dan harmonis antara bagian-bagian benda yang digambar."
+            },
+            {
+                bab: 1,
+                question: "12. Prinsip yang memadukan unsur-unsur seni rupa sehingga saling mendukung dan menjadi satu kesatuan yang utuh dinamakan...",
+                options: ["A. Kesatuan (Unity)", "B. Keseimbangan Radial", "C. Ritme bebas", "D. Pemisahan"],
+                answer: 0,
+                explanation: "Kesatuan (Unity) membuat elemen-elemen karya seni terasa terpadu dan tidak berdiri sendiri-sendiri."
+            },
+            {
+                bab: 1,
+                question: "13. Gambar lukisan pemandangan dengan deretan pohon yang makin jauh makin kecil merupakan penerapan dari ritme...",
+                options: ["A. Oposisi", "B. Transisi / Gradasi Ukuran", "C. Keseimbangan simetris", "D. Acak"],
+                answer: 1,
+                explanation: "Pohon yang mengecil secara bertahap menciptakan ritme gradasi ukuran dan persepsi kedalaman ruang."
+            },
+            {
+                bab: 1,
+                question: "14. Unsur seni rupa 3 dimensi yang membatasi suatu isi atau volume dinamakan...",
+                options: ["A. Bangun / Ruang", "B. Warna primer", "C. Garis halus", "D. Titik acak"],
+                answer: 0,
+                explanation: "Ruang pada karya tiga dimensi bersifat nyata dan memiliki volume serta isi."
+            },
+            {
+                bab: 1,
+                question: "15. Manakah yang tergolong warna sekunder di bawah ini?",
+                options: ["A. Merah, Kuning, Biru", "B. Hijau, Jingga, Ungu", "C. Putih, Hitam, Abu-abu", "D. Cokelat muda saja"],
+                answer: 1,
+                explanation: "Warna sekunder dibuat dari campuran dua warna primer (Hijau, Jingga, Ungu)."
+            },
+            {
+                bab: 1,
+                question: "16. Ketika seniman mengulang pola garis bergelombang pada lukisan laut, seniman tersebut sedang menerapkan...",
+                options: ["A. Keseimbangan Asimetris", "B. Ritme Pengulangan Garis", "C. Tekstur Kasar", "D. Warna Monokrom"],
+                answer: 1,
+                explanation: "Pengulangan garis bergelombang menciptakan ritme atau irama visual gerakan ombak air laut."
+            },
+            {
+                bab: 1,
+                question: "17. Motif batik dengan pengulangan bentuk gurdo/oramen yang teratur adalah contoh nyata penerapan ritme dalam karya seni...",
+                options: ["A. Musik", "B. Rupa Tradisional", "C. Tari", "D. Sastra"],
+                answer: 1,
+                explanation: "Motif batik menggunakan pengulangan ritmis ragam hias pada bidang kain karya seni rupa."
+            },
+
+            /* BAB 2: IKATAN DAN SIMPUL DALAM MAKRAME (16 Soal: 17-32) */
+            {
+                bab: 2,
+                question: "18. Seni kerajinan tangan yang memanfaatkan teknik pilinan, ikatan, dan simpul-simpul tali dinamakan...",
+                options: ["A. Anyaman", "B. Makrame", "C. Ukiran", "D. Batik tulis"],
+                answer: 1,
+                explanation: "Makrame adalah seni kerajinan membuat jalinan atau simpul pada tali benang."
+            },
+            {
+                bab: 2,
+                question: "19. Simpul dasar yang berfungsi untuk mengawali pembuatan karya makrame pada kayu gantung dinamakan...",
+                options: ["A. Simpul Mati", "B. Simpul Kepala (Lark's Head)", "C. Simpul Tunggal", "D. Simpul Rantai"],
+                answer: 1,
+                explanation: "Simpul kepala digunakan untuk mengikat tali pada ring/rangka kayu pengerjaan awal makrame."
+            },
+            {
+                bab: 2,
+                question: "20. Apabila simpul ganda dibuat secara berulang hanya dari satu arah saja (kiri terus atau kanan terus), maka bentuk tali akan menjadi...",
+                options: ["A. Lurus gepeng", "B. Terpilin / Melilit Spiral (Simpul Tunggal)", "C. Putus", "D. Segitiga"],
+                answer: 1,
+                explanation: "Pembuatan simpul satu arah akan menghasilkan bentuk terpilin/spiral yang disebut simpul tunggal."
+            },
+            {
+                bab: 2,
+                question: "21. Simpul makrame yang hasilnya berbentuk pipih rata karena dibuat bergantian arah kiri dan kanan adalah...",
+                options: ["A. Simpul Ganda (Square Knot)", "B. Simpul Tunggal", "C. Simpul Rantai", "D. Simpul Jangkar"],
+                answer: 0,
+                explanation: "Simpul ganda (Square knot) dibuat bergantian dari kiri dan kanan sehingga membentuk struktur pipih."
+            },
+            {
+                bab: 2,
+                question: "22. Fungsi utama dari 'Simpul Mati' pada bagian akhir pengerjaan karya makrame adalah...",
+                options: ["A. Sebagai hiasan utama", "B. Mengunci dan mengikat kuat rantain tali agar tidak mudah terlepas", "C. Menggantungkan kayu", "D. Memperpanjang tali"],
+                answer: 1,
+                explanation: "Simpul mati berfungsi mengunci ikatan secara permanent agar simpul tidak longgar atau terurai."
+            },
+            {
+                bab: 2,
+                question: "23. Manakah bahan serat alami berikut yang cocok digunakan untuk membuat kerajinan makrame?",
+                options: ["A. Kawat besi tebal", "B. Tali katun / Tali kur serat alam", "C. Senar pancing tipis", "D. Pita kertas basah"],
+                answer: 1,
+                explanation: "Tali katun atau tali kur sangat fleksibel dan kuat untuk diikat menjadi karya makrame."
+            },
+            {
+                bab: 2,
+                question: "24. Perhatikan diagram simpul berikut! Gambar ini menunjukkan langkah pembuatan simpul...",
+                options: ["A. Simpul Kepala", "B. Simpul Ganda", "C. Simpul Rantai", "D. Simpul Mati"],
+                answer: 0,
+                explanation: "Diagram memperlihatkan tali dilipat dua dan dimasukkan ke kayu gantungan (Simpul Kepala).",
+                svg: `<svg width="80" height="50"><rect x="10" y="5" width="60" height="6" fill="#8D5B4C"/><path d="M 30 11 C 20 25 35 35 30 45 M 50 11 C 60 25 45 35 50 45" stroke="#EF476F" stroke-width="3" fill="none"/></svg>`
+            },
+            {
+                bab: 2,
+                question: "25. Contoh benda hasil karya makrame yang berguna untuk meletakkan tanaman hias gantung di rumah adalah...",
+                options: ["A. Keranjang bambu", "B. Gantungan pot (Plant Hanger)", "C. Kipas kertas", "D. Tikar lipat"],
+                answer: 1,
+                explanation: "Gantungan pot merupakan salah satu produk karya makrame yang sangat populer."
+            },
+            {
+                bab: 2,
+                question: "26. Perbedaan utama antara 'Ikatan' dan 'Simpul' dalam seni makrame terletak pada...",
+                options: ["A. Ikatan menghubungkan tali dengan benda lain, sedangkan simpul menghubungkan tali dengan tali itu sendiri", "B. Ikatan menggunakan lem", "C. Simpul hanya untuk kain", "D. Tidak ada perbedaannya"],
+                answer: 0,
+                explanation: "Ikatan menyambung tali ke struktur benda (kayu/ring), sedangkan simpul membelitkan tali pada tali."
+            },
+            {
+                bab: 2,
+                question: "27. Dalam kerajinan aksesoris, makrame sering dimanfaatkan untuk membuat...",
+                options: ["A. Gelang tangan dan kalung etnik", "B. Sepatu besi", "C. Piring kaca", "D. Lemari kayu"],
+                answer: 0,
+                explanation: "Simpul-simpul indah makrame fleksibel dibuat menjadi gelang dan aksesoris fashion."
+            },
+            {
+                bab: 2,
+                question: "28. Alat sederhana yang biasa digunakan untuk membantu menjepit atau menahan pangkal tali saat membuat simpul makrame adalah...",
+                options: ["A. Papan klip / Papan makrame dan jarum pentul", "B. Palu besi", "C. Cangkul", "D. Kuas lukis"],
+                answer: 0,
+                explanation: "Papan klip memegang tali utama agar tidak bergeser saat seniman menyimpul."
+            },
+            {
+                bab: 2,
+                question: "29. Berapakah jumlah helai tali minimal yang dibutuhkan untuk mempraktikkan ikatan simpul ganda (Square Knot) dasar?",
+                options: ["A. 1 helai", "B. 2 helai (atau 4 ujung tali)", "C. 10 helai", "D. 100 helai"],
+                answer: 1,
+                explanation: "Simpul ganda umumnya memakai 2 pasang tali (2 tali penuntun di tengah dan 2 tali pengikat di samping)."
+            },
+            {
+                bab: 2,
+                question: "30. Kata 'Makrame' berasal dari bahasa Arab 'Migramah' yang memiliki arti...",
+                options: ["A. Pemandangan indah", "B. Hiasan rumbai-rumbai atau anyaman benang", "C. Lukisan dinding", "D. Tanah liat bakar"],
+                answer: 1,
+                explanation: "Secara etimologi, Migramah berarti rumbai-rumbai renda atau hiasan kain benang."
+            },
+            {
+                bab: 2,
+                question: "31. Teknik merapikan rumbai-rumbai pada bagian bawah gantungan makrame biasanya menggunakan...",
+                options: ["A. Sisir benang dan gunting", "B. Lem kayu tebal", "C. Cat minyak", "D. Air panas"],
+                answer: 0,
+                explanation: "Sisir benang berguna menguraikan pilinan tali menjadi rumbai-rumbai halus, lalu dirapikan dengan gunting."
+            },
+            {
+                bab: 2,
+                question: "32. Mengapa pemilihan ketebalan tali harus disesuaikan dengan jenis produk makrame yang dibuat?",
+                options: ["A. Agar warna tali tidak pudar", "B. Agar kekuatan dan keindahan estetika produk sesuai dengan fungsinya", "C. Supaya tali cepat habis", "D. Tidak mempengaruhi apapun"],
+                answer: 1,
+                explanation: "Ketebalan tali menentukan daya tahan beban (misal gantungan pot butuh tali tebal) dan keindahan bentuk simpul."
+            },
+            {
+                bab: 2,
+                question: "33. Karya makrame tergolong ke dalam seni rupa jenis...",
+                options: ["A. Seni murni 2D", "B. Seni kriya / kerajinan tangan 3D", "C. Seni grafis cetak", "D. Seni musik instrumen"],
+                answer: 1,
+                explanation: "Makrame termasuk dalam kelompok seni kriya (craft) berbahan tali yang memiliki bentuk 3 dimensi."
+            },
+
+            /* BAB 3: ANEKA ANYAMAN UNTUK SUVENIR (17 Soal: 33-49) */
+            {
+                bab: 3,
+                question: "34. Kerajinan yang dibuat dengan cara menyilangkan pita bahan pakan dan lungsi secara berselang-seling dinamakan...",
+                options: ["A. Makrame", "B. Anyaman", "C. Ukiran kayu", "D. Batik tulis"],
+                answer: 1,
+                explanation: "Anyaman dibuat dengan prinsip menyilangkan pita/lembaran bahan (lungsi dan pakan)."
+            },
+            {
+                bab: 3,
+                question: "35. Pita/lembaran anyaman yang posisinya membujur vertikal dan dipasang terlebih dahulu dinamakan pita...",
+                options: ["A. Pakan", "B. Lungsi", "C. Simpul", "D. Rumbai"],
+                answer: 1,
+                explanation: "Lungsi adalah pita anyaman yang posisinya membujur (vertikal), sedangkan pakan melintang (horisontal)."
+            },
+            {
+                bab: 3,
+                question: "36. Manakah yang tergolong bahan anyaman alami dari tumbuhan berikut?",
+                options: ["A. Pita plastik warna", "B. Bambu, rotan, dan daun pandan", "C. Karet sintetis", "D. Kabel tembaga"],
+                answer: 1,
+                explanation: "Bambu, rotan, dan daun pandan merupakan bahan serat alam yang populer untuk menganyam."
+            },
+            {
+                bab: 3,
+                question: "37. Pola anyaman paling dasar dimana 1 pita pakan disilangkan berselang-seling melompati 1 pita lungsi dinamakan...",
+                options: ["A. Pola Anyaman Tunggal (1:1)", "B. Pola Ganda 3:3", "C. Pola Miring Chevron", "D. Pola Bunga"],
+                answer: 0,
+                explanation: "Pola tunggal (1:1) adalah pola paling sederhana menyilangkan satu-satu pita pakan dan lungsi.",
+                svg: `<svg width="60" height="40"><rect width="60" height="40" fill="#E2E8F0"/><rect width="30" height="20" fill="#118AB2"/><rect x="30" y="20" width="30" height="20" fill="#118AB2"/></svg>`
+            },
+            {
+                bab: 3,
+                question: "38. Perhatikan gambar pola berikut! Pola anyaman yang menyilangkan pita melompati 2 pakan dan 2 lungsi dinamakan...",
+                options: ["A. Pola Tunggal", "B. Pola Anyaman Ganda (2:2 / Kepang)", "C. Pola Acak", "D. Pola Lingkaran"],
+                answer: 1,
+                explanation: "Pola ganda (2:2) dibuat dengan mengangkat dua pita lungsi dan melompati dua pita pakan berturut-turut.",
+                svg: `<svg width="60" height="40"><rect width="60" height="40" fill="#EF476F"/><rect width="30" height="40" fill="#FFD166" opacity="0.6"/></svg>`
+            },
+            {
+                bab: 3,
+                question: "39. Sebelum serat bambu dianyam menjadi produk, bambu harus diolah terlebih dahulu dengan cara...",
+                options: ["A. Di-serut tipis dan dikeringkan", "B. Didekatkan ke api langsung", "C. Dihancurkan sampai halus", "D. Diberi lem cair"],
+                answer: 0,
+                explanation: "Batang bambu dibelah, diserut halus menjadi pita-pita tipis yang lentur lalu dikeringkan."
+            },
+            {
+                bab: 3,
+                question: "40. Mengapa bahan kertas warna sangat cocok digunakan oleh siswa SD untuk latihan awal menganyam?",
+                options: ["A. Sangat keras", "B. Mudah dipotong, lentur, dan memiliki variasi warna menarik", "C. Mahal dan langka", "D. Tidak bisa robek"],
+                answer: 1,
+                explanation: "Kertas warna (kertas origami/asturo) aman, murah, lentur, serta menarik untuk belajar teknik anyam dasar."
+            },
+            {
+                bab: 3,
+                question: "41. Contoh barang suvenir kecil khas daerah yang sering memanfaatkan teknik anyaman halus adalah...",
+                options: ["A. Kipas tangan, tempat pensil, dan gantungan kunci", "B. Sepeda motor", "C. Pintu rumah", "D. Komputer"],
+                answer: 0,
+                explanation: "Kipas, tempat pensil, dan dompet mungil merupakan suvenir anyaman yang fungsional dan bernilai seni."
+            },
+            {
+                bab: 3,
+                question: "42. Lembaran daun pandan duri yang akan dijadikan bahan anyaman harus dihilangkan durinya dan dikukus agar...",
+                options: ["A. Daun menjadi lemas, lentur, dan tidak mudah patah", "B. Berwarna hitam pekat", "C. Menjadi sangat keras seperti kayu", "D. Berbau harum"],
+                answer: 0,
+                explanation: "Proses perebusan/pengukusan daun pandan membuat seratnya menjadi lemas dan awet saat dianyam."
+            },
+            {
+                bab: 3,
+                question: "43. Apa yang dimaksud dengan produk suvenir?",
+                options: ["A. Benda cinderamata kenang-kenangan dari suatu tempat atau peristiwa", "B. Makanan cepat saji", "C. Baju seragam sekolah", "D. Alat pemadam api"],
+                answer: 0,
+                explanation: "Suvenir adalah kerajinan cinderamata khas yang dibeli/diberikan sebagai pengingat kenangan."
+            },
+            {
+                bab: 3,
+                question: "44. Alat pemotong yang digunakan untuk membuat irisan pita anyaman kertas adalah...",
+                options: ["A. Gunting atau Cutter dan Penggaris", "B. Gergaji besi", "C. Cangkul", "D. Jarum jahit"],
+                answer: 0,
+                explanation: "Gunting atau cutter digunakan bersama penggaris agar irisan pita anyaman lurus dan rapi."
+            },
+            {
+                bab: 3,
+                question: "45. Langkah pertama dalam membuat karya anyaman dari kertas warna adalah...",
+                options: ["A. Langsung memberi lem", "B. Membuat garis-garis pola jalur potongan pada kertas lungsi dan pakan", "C. Membakar kertas", "D. Menggulung kertas"],
+                answer: 1,
+                explanation: "Membuat garis pola ukuran yang presisi dengan pensil dan penggaris adalah langkah awal wajib."
+            },
+            {
+                bab: 3,
+                question: "46. Agar hasil akhir anyaman kertas tidak terurai atau terlepas, bagian tepi anyaman harus...",
+                options: ["A. Diolesi perekat/lem kertas lalu dirapikan potongan tepinya", "B. Dibiarkan saja", "C. Ditarik kencang", "D. Dicuci air"],
+                answer: 0,
+                explanation: "Bagian pinggir anyaman diberi lem perekat agar posisi pita lungsi dan pakan terkunci rapat."
+            },
+            {
+                bab: 3,
+                question: "47. Anyaman Tiga Dimensi berbeda dari Anyaman Dua Dimensi karena...",
+                options: ["A. Memiliki ruang, volume, dan dapat diisi benda (seperti keranjang/tas)", "B. Hanya bisa ditempel di buku", "C. Berbentuk garis lurus saja", "D. Tidak bisa dipegang"],
+                answer: 0,
+                explanation: "Anyaman 3D memiliki rongga dan kedalaman ruang nyata seperti wadah, keranjang, atau topi."
+            },
+            {
+                bab: 3,
+                question: "48. Motif anyaman 'Sasag' pada kerajinan bambu tradisional umumnya menggunakan pola dasar...",
+                options: ["A. Pola Tunggal 1:1", "B. Pola melingkar acak", "C. Pola bundar", "D. Pola garis tak teratur"],
+                answer: 0,
+                explanation: "Anyaman Sasag menggunakan pola tunggal selang-seling 1:1 yang rapat dan kokoh."
+            },
+            {
+                bab: 3,
+                question: "49. Nilai estetika (keindahan) pada kerajinan anyaman suvenir dapat ditingkatkan dengan cara...",
+                options: ["A. Mengombinasikan warna-warna pita yang kontras dan harmonis", "B. Membiarkan potongan tidak rapi", "C. Menggunakan bahan yang kotor", "D. Dibuat tanpa pola"],
+                answer: 0,
+                explanation: "Kombinasi warna pita yang serasi serta kerapian jalinan meningkatkan nilai estetika karya."
+            },
+            {
+                bab: 3,
+                question: "50. Mengembangkan keterampilan menganyam suvenir sejak sekolah dasar dapat melatih sikap positif siswa, yaitu...",
+                options: ["A. Ketelitian, kesabaran, kreativitas, dan ketekunan", "B. Sifat terburu-buru", "C. Malas berkarya", "D. Boros bahan baku"],
+                answer: 0,
+                explanation: "Menganyam melatih kesabaran, ketelitian motorik halus, dan kreativitas menciptakan karya berguna."
+            }
+        ];
+
+        /* SPEECH SYNTHESIS (INDONESIAN VOICE) */
+        function speakVoice(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop ongoing speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.95;
+                utterance.pitch = 1.05;
+                
+                // Try selecting Indonesian voice if available
+                const voices = window.speechSynthesis.getVoices();
+                const idVoice = voices.find(v => v.lang.includes('id') || v.lang.includes('ID'));
+                if (idVoice) utterance.voice = idVoice;
+                
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        /* NAVIGATION & SCREEN CONTROLLER */
+        function showScreen(screenId) {
+            const screens = ['secWelcome', 'secInstructions', 'secMap', 'secLesson', 'secQuiz', 'secResult'];
+            screens.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* SUBMIT STUDENT NAME */
+        function submitName() {
+            const input = document.getElementById('studentNameInput').value.trim();
+            if (!input) {
+                alert('Mohon masukkan nama kamu terlebih dahulu ya!');
+                return;
+            }
+            studentName = input;
+            
+            // Update User Badge Header
+            document.getElementById('badgeStudentName').innerText = studentName;
+            document.getElementById('userBadge').classList.remove('hidden');
+            
+            // Personalize Instructions Greeting
+            document.getElementById('greetingText').innerText = `Halo, ${studentName}! Selamat datang di Petualangan Seni Rupa Kelas 6!`;
+            
+            showScreen('secInstructions');
+            
+            // Voice Welcome
+            speakVoice(`Halo ${studentName}! Selamat datang di Petualangan Seni Rupa Kelas 6.`);
+        }
+
+        function goToHome() {
+            showScreen('secWelcome');
+        }
+
+        function goToMap() {
+            showScreen('secMap');
+        }
+
+        /* OPEN LESSON MATERIAL */
+        function openLesson(babNum) {
+            showScreen('secLesson');
+            document.getElementById('bab1Content').classList.add('hidden');
+            document.getElementById('bab2Content').classList.add('hidden');
+            document.getElementById('bab3Content').classList.add('hidden');
+
+            document.getElementById(`bab${babNum}Content`).classList.remove('hidden');
+            document.getElementById('lessonBabTitle').innerText = `BAB ${babNum}`;
+
+            if (isFromQuiz) {
+                document.getElementById('btnReturnQuiz').classList.remove('hidden');
+            } else {
+                document.getElementById('btnReturnQuiz').classList.add('hidden');
+            }
+        }
+
+        function openLessonFromQuiz() {
+            isFromQuiz = true;
+            // Determine current Bab from question index
+            const q = quizData[currentQuestionIdx];
+            openLesson(q.bab);
+        }
+
+        function returnToQuiz() {
+            isFromQuiz = false;
+            showScreen('secQuiz');
+        }
+
+        /* QUIZ ENGINE */
+        function startQuiz() {
+            currentQuestionIdx = 0;
+            currentScore = 0;
+            quizAnswers = [];
+            isFromQuiz = false;
+            updateScoreDisplay();
+            showScreen('secQuiz');
+            loadQuestion();
+        }
+
+        function updateScoreDisplay() {
+            document.getElementById('badgeScore').innerText = `${currentScore} PTS`;
+            document.getElementById('quizScoreText').innerText = `${currentScore} PTS`;
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentQuestionIdx];
+            
+            // Progress Bar & Header
+            document.getElementById('quizNumBadge').innerText = `SOAL ${currentQuestionIdx + 1} / 50`;
+            document.getElementById('quizBabCategory').innerText = `Bab ${q.bab}: ${q.bab === 1 ? 'Unsur & Prinsip' : q.bab === 2 ? 'Makrame' : 'Anyaman'}`;
+            
+            const progressPercent = ((currentQuestionIdx + 1) / 50) * 100;
+            document.getElementById('quizProgressBar').style.width = `${progressPercent}%`;
+
+            // SVG Container
+            const svgBox = document.getElementById('quizImageContainer');
+            if (q.svg) {
+                svgBox.innerHTML = q.svg;
+                svgBox.classList.remove('hidden');
+            } else {
+                svgBox.classList.add('hidden');
+            }
+
+            // Question Text
+            document.getElementById('quizQuestionText').innerText = q.question;
+
+            // Options
+            const optGrid = document.getElementById('quizOptionsGrid');
+            optGrid.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-2xl border-2 border-gray-200 hover:border-brandBlue hover:bg-blue-50/50 font-bold text-sm md:text-base text-brandDark transition btn-bounce flex items-center justify-between`;
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-300"></i>`;
+                btn.onclick = () => selectOption(idx);
+                optGrid.appendChild(btn);
+            });
+
+            // Hide Feedback
+            document.getElementById('quizFeedbackBox').classList.add('hidden');
+        }
+
+        function selectOption(selectedIdx) {
+            const q = quizData[currentQuestionIdx];
+            const isCorrect = (selectedIdx === q.answer);
+            const optBtns = document.getElementById('quizOptionsGrid').children;
+
+            // Disable all option buttons
+            for (let btn of optBtns) {
+                btn.disabled = true;
+                btn.classList.remove('hover:border-brandBlue', 'hover:bg-blue-50/50', 'btn-bounce');
+            }
+
+            const feedbackBox = document.getElementById('quizFeedbackBox');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackTitle = document.getElementById('feedbackTitle');
+            const feedbackExp = document.getElementById('feedbackExplanation');
+
+            if (isCorrect) {
+                // Correct Answer
+                currentScore += 20;
+                updateScoreDisplay();
+
+                optBtns[selectedIdx].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+                optBtns[selectedIdx].querySelector('i').className = 'fa-solid fa-circle-check text-emerald-600';
+
+                feedbackBox.className = "p-4 rounded-2xl mb-6 border-2 bg-emerald-50 border-emerald-300";
+                feedbackIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 font-bold bg-brandGreen";
+                feedbackIcon.innerHTML = "✓";
+                feedbackTitle.className = "font-extrabold text-base md:text-lg mb-1 text-emerald-900";
+                feedbackTitle.innerText = `✓ BENAR! HEBAT, ${studentName.toUpperCase()}!`;
+                
+                speakVoice(`Benar, ${studentName}! Hebat sekali!`);
+            } else {
+                // Incorrect Answer
+                optBtns[selectedIdx].classList.add('bg-rose-100', 'border-rose-400', 'text-rose-900');
+                optBtns[selectedIdx].querySelector('i').className = 'fa-solid fa-circle-xmark text-rose-500';
+
+                // Highlight correct one
+                optBtns[q.answer].classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-800');
+
+                feedbackBox.className = "p-4 rounded-2xl mb-6 border-2 bg-rose-50 border-rose-200";
+                feedbackIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 font-bold bg-brandPink";
+                feedbackIcon.innerHTML = "✕";
+                feedbackTitle.className = "font-extrabold text-base md:text-lg mb-1 text-rose-900";
+                feedbackTitle.innerText = `✗ BELUM TEPAT, ${studentName.toUpperCase()}`;
+
+                speakVoice(`Belum tepat, ${studentName}. Yuk pelajari kembali materinya.`);
+            }
+
+            feedbackExp.innerText = `${q.explanation} (Jawaban yang benar: ${q.options[q.answer]})`;
+            feedbackBox.classList.remove('hidden');
+
+            // Record Answer
+            quizAnswers.push({
+                questionIdx: currentQuestionIdx,
+                selected: selectedIdx,
+                correct: isCorrect
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIdx++;
+            if (currentQuestionIdx < 50) {
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        /* FINISH QUIZ & SHOW RESULTS */
+        function finishQuiz() {
+            showScreen('secResult');
+            
+            const totalCorrect = quizAnswers.filter(a => a.correct).length;
+            const totalWrong = 50 - totalCorrect;
+
+            document.getElementById('resultStudentGreeting').innerText = `Selamat ${studentName}, kamu telah menyelesaikan 50 Soal Seni Rupa!`;
+            document.getElementById('finalScoreVal').innerText = currentScore;
+            document.getElementById('finalCorrectVal').innerText = totalCorrect;
+            document.getElementById('finalWrongVal').innerText = totalWrong;
+
+            // Category Badge
+            const badge = document.getElementById('badgeCategory');
+            if (currentScore >= 800) {
+                badge.innerText = "🏆 MASTER SENI RUPA";
+                badge.className = "inline-block bg-brandPurple text-white font-extrabold px-6 py-2.5 rounded-full text-base md:text-lg shadow-lg";
+            } else if (currentScore >= 600) {
+                badge.innerText = "🌟 SENIMAN MUDA HEBAT";
+                badge.className = "inline-block bg-brandBlue text-white font-extrabold px-6 py-2.5 rounded-full text-base md:text-lg shadow-lg";
+            } else {
+                badge.innerText = "🎨 CALON SENIMAN";
+                badge.className = "inline-block bg-brandYellow text-brandDark font-extrabold px-6 py-2.5 rounded-full text-base md:text-lg shadow-lg";
+            }
+
+            speakVoice(`Selamat, ${studentName}! Kamu telah menyelesaikan 50 soal Seni Rupa dengan skor ${currentScore}.`);
+        }
+
+        function restartQuiz() {
+            startQuiz();
+        }
+
+        /* CERTIFICATE GENERATOR (CANVAS API) */
+        function generateCertificateCanvas() {
+            const canvas = document.getElementById('certCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Clear
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background
+            ctx.fillStyle = "#FFFDF9";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Artistic Border Gradient
+            const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            grad.addColorStop(0, "#118AB2");
+            grad.addColorStop(0.5, "#EF476F");
+            grad.addColorStop(1, "#FFD166");
+
+            ctx.lineWidth = 16;
+            ctx.strokeStyle = grad;
+            ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
+
+            // Inner Frame Line
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "#073B4C";
+            ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+
+            // Certificate Header Icon
+            ctx.font = "36px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText("🎨", canvas.width / 2, 75);
+
+            // Title
+            ctx.fillStyle = "#073B4C";
+            ctx.font = "bold 30px Fredoka, sans-serif";
+            ctx.fillText("SERTIFIKAT PENGHARGAAN", canvas.width / 2, 115);
+
+            ctx.fillStyle = "#118AB2";
+            ctx.font = "bold 16px Nunito, sans-serif";
+            ctx.fillText("Diberikan Kepada Seniman Muda Terbaik:", canvas.width / 2, 150);
+
+            // Student Name
+            ctx.fillStyle = "#EF476F";
+            ctx.font = "black 32px Fredoka, sans-serif";
+            ctx.fillText(studentName.toUpperCase(), canvas.width / 2, 200);
+
+            // Decorative Line under Name
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2 - 150, 215);
+            ctx.lineTo(canvas.width / 2 + 150, 215);
+            ctx.strokeStyle = "#FFD166";
+            ctx.lineWidth = 4;
+            ctx.stroke();
+
+            // Description
+            ctx.fillStyle = "#073B4C";
+            ctx.font = "16px Nunito, sans-serif";
+            ctx.fillText("Atas keberhasilannya menyelesaikan seluruh petualangan materi & 50 Soal Kuis", canvas.width / 2, 255);
+
+            ctx.font = "bold 20px Fredoka, sans-serif";
+            ctx.fillStyle = "#8338EC";
+            ctx.fillText('"PETUALANGAN SENI RUPA KELAS 6 SD/MI"', canvas.width / 2, 290);
+
+            // Score Box
+            ctx.fillStyle = "#F0F9FF";
+            ctx.fillRect(canvas.width / 2 - 180, 320, 360, 80);
+            ctx.strokeStyle = "#118AB2";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(canvas.width / 2 - 180, 320, 360, 80);
+
+            const totalCorrect = quizAnswers.filter(a => a.correct).length;
+            ctx.fillStyle = "#073B4C";
+            ctx.font = "bold 16px Nunito, sans-serif";
+            ctx.fillText(`TOTAL SKOR: ${currentScore} / 1000 POIN`, canvas.width / 2, 350);
+            ctx.fillText(`Jawaban Benar: ${totalCorrect} dari 50 Soal`, canvas.width / 2, 380);
+
+            // Date & Developer Info
+            const today = new Date().toLocaleDateString('id-ID', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+
+            ctx.fillStyle = "#666";
+            ctx.font = "14px Nunito, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText(`Tanggal: ${today}`, 50, 480);
+
+            ctx.textAlign = "right";
+            ctx.fillText("Pengembang: Giga Inovation", canvas.width - 50, 470);
+            ctx.fillText("081329200985", canvas.width - 50, 490);
+        }
+
+        function showCertificateModal() {
+            document.getElementById('certModal').classList.remove('hidden');
+            generateCertificateCanvas();
+        }
+
+        function closeCertModal() {
+            document.getElementById('certModal').classList.add('hidden');
+        }
+
+        function downloadCertificate() {
+            const canvas = document.getElementById('certCanvas');
+            const link = document.createElement('a');
+            link.download = `Sertifikat_SeniRupa_${studentName.replace(/\s+/g, '_')}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Initialize App
+        window.onload = function() {
+            showScreen('secWelcome');
+        };
+    </script>
+</body>
+</html>

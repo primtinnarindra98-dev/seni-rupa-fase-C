@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Maestro Kingdom - Game Pembelajaran Seni Rupa Kelas 6 SD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        art: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e',
+                            purple: '#8b5cf6',
+                            emerald: '#10b981',
+                            cyan: '#06b6d4',
+                            gold: '#eab308'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(circle at top left, #2e1065, #0f172a, #020617);
+            color: #f8fafc;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glow-amber {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+        }
+        .glow-purple {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.35);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+        .glow-gold {
+            box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
+        }
+        
+        @keyframes bounceShort {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-bounce-short {
+            animation: bounceShort 0.4s ease-in-out;
+        }
+
+        /* Certificate Print Layout Rules */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #certificate-modal, #certificate-modal * {
+                visibility: visible;
+            }
+            #certificate-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #ffffff !important;
+                color: #0f172a !important;
+                padding: 1rem !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .cert-border-print {
+                border: 8px double #d97706 !important;
+                background: #fffdfa !important;
+                color: #0f172a !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen justify-between p-3 md:p-6 select-none">
+
+    <!-- HEADER BRANDING -->
+    <header class="w-full max-w-5xl mx-auto flex items-center justify-between glass-panel p-4 rounded-2xl mb-4 border-b border-amber-500/30">
+        <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-2xl shadow-lg glow-amber">
+                <i class="fa-solid fa-palette"></i>
+            </div>
+            <div>
+                <h1 class="font-display font-bold text-xl md:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-rose-300 to-purple-300">
+                    ART MAESTRO KINGDOM
+                </h1>
+                <p class="text-xs text-slate-300">Petualangan Seni Rupa Fase C Kelas 6 SD • Kurikulum Merdeka</p>
+            </div>
+        </div>
+        <div class="text-right hidden sm:block">
+            <div class="text-[11px] text-slate-400">Pengembang Game:</div>
+            <div class="text-xs font-bold text-amber-300"><i class="fa-solid fa-paintbrush mr-1"></i>Giga Inovation</div>
+            <div class="text-[10px] text-emerald-400 font-semibold"><i class="fa-brands fa-whatsapp mr-1"></i>081329200985</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="w-full max-w-5xl mx-auto flex-grow flex flex-col justify-center">
+
+        <!-- SCREEN 1: LOGIN / IDENTITAS SISWA -->
+        <section id="screen-login" class="glass-panel p-6 md:p-10 rounded-3xl text-center glow-purple relative overflow-hidden my-auto border border-purple-500/30">
+            <div class="absolute -top-12 -left-12 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-amber-500/20 rounded-full blur-3xl"></div>
+
+            <div class="inline-block p-4 bg-amber-500/20 rounded-full mb-3 border border-amber-400/40 text-amber-300 text-4xl shadow-inner">
+                <i class="fa-solid fa-paintbrush"></i>
+            </div>
+            <h2 class="font-display text-2xl md:text-4xl font-extrabold mb-2 text-white tracking-wide">
+                Selamat Datang, Seniman Cilik!
+            </h2>
+            <p class="text-slate-300 text-xs md:text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+                Galeri Seni Kerajaan kehilangan warnanya! Selesaikan <span class="text-amber-300 font-bold">50 Misi Seni Rupa Kelas 6</span> untuk mengembalikan keindahan museum dan dapatkan <span class="text-emerald-300 font-bold">Sertifikat Resmi Maestro Seni</span>!
+            </p>
+
+            <form id="form-login" onsubmit="startGame(event)" class="max-w-md mx-auto space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-amber-200 mb-1 uppercase tracking-wider">Nama Lengkap Siswa</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user-pen absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="input-nama" required placeholder="Contoh: Anisa Permata"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-900/90 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white placeholder-slate-500 text-sm font-medium">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-amber-200 mb-1 uppercase tracking-wider">Nama Sekolah SD/MI</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-school-flag absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="input-sekolah" required placeholder="Contoh: SD Negeri 1 Nusantara"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-900/90 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white placeholder-slate-500 text-sm font-medium">
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:from-amber-400 hover:to-purple-500 font-display font-bold text-lg text-white rounded-xl shadow-lg glow-amber transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-2 mt-6 cursor-pointer">
+                    <span>MULAI PETUALANGAN SENI</span>
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+            </form>
+        </section>
+
+        <!-- SCREEN 2: GAMEPLAY & KUIS -->
+        <section id="screen-game" class="hidden flex-col space-y-4">
+            
+            <!-- STATUS BAR -->
+            <div class="glass-panel p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 border-l-4 border-amber-400">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 border border-amber-400/50 flex items-center justify-center text-amber-300 text-lg">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <div>
+                        <div id="display-nama" class="font-bold text-sm text-amber-300">Nama Siswa</div>
+                        <div id="display-sekolah" class="text-xs text-slate-300">Nama Sekolah</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <!-- Progress Zone -->
+                    <div class="text-center">
+                        <div class="text-[10px] text-slate-400 uppercase font-semibold">Tantangan Ke</div>
+                        <div class="font-display font-bold text-lg text-amber-300">
+                            <span id="display-soal-num">1</span> / 50
+                        </div>
+                    </div>
+                    <!-- Score EXP -->
+                    <div class="text-center">
+                        <div class="text-[10px] text-slate-400 uppercase font-semibold">Skor EXP</div>
+                        <div id="display-score" class="font-display font-bold text-xl text-emerald-400">0</div>
+                    </div>
+                    <!-- Streak Combo -->
+                    <div class="text-center hidden sm:block">
+                        <div class="text-[10px] text-slate-400 uppercase font-semibold">Combo</div>
+                        <div id="display-combo" class="font-display font-bold text-lg text-purple-400">0x</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="w-full bg-slate-800/80 h-3 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                <div id="progress-bar-inner" class="bg-gradient-to-r from-amber-400 via-rose-500 to-purple-500 h-full rounded-full transition-all duration-300" style="width: 2%;"></div>
+            </div>
+
+            <!-- QUESTION CARD -->
+            <div class="glass-panel p-5 md:p-8 rounded-3xl space-y-5 relative border border-slate-700/80 shadow-2xl">
+                <!-- Bab & Chapter Badge -->
+                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                    <span id="display-bab-tag" class="px-3 py-1 bg-amber-500/20 text-amber-300 text-xs font-semibold rounded-full border border-amber-500/30">
+                        <i class="fa-solid fa-layer-group mr-1"></i> Bab 1: Unsur, Prinsip & Ritme Seni Rupa
+                    </span>
+                    <span class="text-xs text-slate-400 font-medium">
+                        <i class="fa-solid fa-graduation-cap text-purple-400 mr-1"></i> Seni Rupa Kelas 6
+                    </span>
+                </div>
+
+                <!-- Story & Mentor Dialog -->
+                <div class="flex items-start space-x-4 bg-slate-900/70 p-4 rounded-2xl border border-slate-800">
+                    <div class="w-11 h-11 rounded-xl bg-rose-500/20 border border-rose-500/40 flex-shrink-0 flex items-center justify-center text-rose-300 text-xl shadow-inner">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="text-xs font-bold text-rose-300 uppercase tracking-wide">Instruksi Panduan Kurikulum:</div>
+                        <p id="display-question-text" class="text-white text-sm md:text-base font-medium mt-1 leading-relaxed">
+                            Memuat pertanyaan kuis...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- OPTIONS GRID -->
+                <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
+                    <!-- Dynamic Answer Buttons will be injected here -->
+                </div>
+
+                <!-- FEEDBACK MODAL / BOX (Educative Explanation) -->
+                <div id="feedback-box" class="hidden p-5 rounded-2xl border transition-all duration-300 animate-bounce-short">
+                    <div class="flex items-start space-x-3">
+                        <div id="feedback-icon" class="text-2xl mt-0.5"></div>
+                        <div class="space-y-2 w-full">
+                            <h4 id="feedback-title" class="font-display font-bold text-base md:text-lg">Feedback Title</h4>
+                            
+                            <!-- Display Correct Answer highlight if user is wrong -->
+                            <div id="feedback-correct-answer-container" class="hidden p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-xl text-xs md:text-sm text-emerald-200">
+                                <span class="font-bold text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i> Jawaban yang Benar:</span>
+                                <p id="feedback-correct-answer-text" class="font-semibold text-white mt-1"></p>
+                            </div>
+
+                            <p id="feedback-explanation" class="text-xs md:text-sm text-slate-200 leading-relaxed"></p>
+
+                            <button onclick="nextQuestion()" class="mt-3 px-6 py-2.5 bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-white font-bold text-sm rounded-xl shadow-lg flex items-center space-x-2 transition-all cursor-pointer">
+                                <span>Lanjutkan Misi</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SCREEN 3: CERTIFICATE / COMPLETION SCREEN -->
+        <section id="screen-certificate" class="hidden flex-col items-center justify-center my-auto p-2">
+            
+            <div id="certificate-modal" class="cert-border-print w-full max-w-4xl bg-slate-900 border-8 border-amber-500/80 rounded-3xl p-6 md:p-10 text-center relative shadow-2xl overflow-hidden glow-gold">
+                <!-- Watermark Background Emblem -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
+                    <i class="fa-solid fa-award text-[320px]"></i>
+                </div>
+
+                <!-- Certificate Header -->
+                <div class="flex items-center justify-between border-b-2 border-amber-500/40 pb-4 mb-6">
+                    <div class="text-left">
+                        <span class="text-xs font-bold text-amber-400 tracking-widest uppercase">GIGA INOVATION ACADEMY</span>
+                        <div class="text-[10px] text-slate-400">Pendidikan Seni Rupa Sekolah Dasar</div>
+                    </div>
+                    <div class="text-3xl text-amber-400">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-bold text-purple-400 tracking-widest uppercase">FASE C (KELAS 6 SD)</span>
+                        <div class="text-[10px] text-slate-400">Kurikulum Merdeka</div>
+                    </div>
+                </div>
+
+                <!-- Certificate Title -->
+                <h2 class="font-display font-extrabold text-2xl md:text-4xl text-amber-400 tracking-wide uppercase mb-1">
+                    SERTIFIKAT PENGHARGAAN
+                </h2>
+                <p class="text-xs md:text-sm text-slate-300 italic mb-6">Diberikan atas kelulusan dan prestasi luar biasa dalam menyelesaikan 50 Tantangan Seni Rupa Kelas 6</p>
+
+                <!-- Student Info -->
+                <div class="my-6 space-y-2">
+                    <div class="text-xs text-slate-400 uppercase tracking-widest">Sertifikat Penghargaan ini Resmi Dianugerahkan Kepada:</div>
+                    <div id="cert-nama" class="font-display text-2xl md:text-4xl font-extrabold text-amber-300 underline decoration-amber-500/50 underline-offset-8">
+                        NAMA SISWA
+                    </div>
+                    <div id="cert-sekolah" class="text-sm md:text-lg font-semibold text-slate-200 pt-2">
+                        SEKOLAH SISWA
+                    </div>
+                </div>
+
+                <!-- Performance Summary -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-xl mx-auto my-6 p-4 bg-slate-800/80 rounded-2xl border border-slate-700 text-center">
+                    <div>
+                        <div class="text-[10px] text-slate-400 uppercase">Materi Tuntas</div>
+                        <div class="font-bold text-base text-white">50 Soal Seni Rupa</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 uppercase">Perolehan Skor</div>
+                        <div id="cert-skor" class="font-bold text-xl text-emerald-400">0 EXP</div>
+                    </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <div class="text-[10px] text-slate-400 uppercase">Predikat Kelulusan</div>
+                        <div id="cert-predikat" class="font-bold text-xs text-amber-300">MAESTRO SENI RUPA</div>
+                    </div>
+                </div>
+
+                <!-- Official Signature & Verification Footer -->
+                <div class="mt-8 pt-6 border-t border-slate-700/60 flex flex-wrap justify-between items-end gap-4 text-xs text-slate-400">
+                    <div class="text-left space-y-1">
+                        <div class="font-bold text-slate-300">Tim Pengembang & Builder Game:</div>
+                        <div class="text-amber-300 font-bold"><i class="fa-solid fa-cubes mr-1"></i>Giga Inovation</div>
+                        <div><i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i>081329200985</div>
+                    </div>
+
+                    <div class="text-center my-1">
+                        <div class="w-14 h-14 mx-auto rounded-full border-2 border-dashed border-amber-400/80 flex items-center justify-center text-amber-400 text-2xl mb-1">
+                            <i class="fa-solid fa-stamp"></i>
+                        </div>
+                        <div class="text-[9px] text-amber-300/90 uppercase font-bold tracking-wider">Terverifikasi Kurikulum Merdeka</div>
+                    </div>
+
+                    <div class="text-right space-y-1">
+                        <div id="cert-tanggal" class="text-slate-300">Tanggal: -</div>
+                        <div class="text-slate-400">Status: <span class="text-emerald-400 font-bold">LULUS FASE C</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="no-print mt-6 flex flex-wrap justify-center gap-4">
+                <button onclick="window.print()" class="px-6 py-3 bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-slate-950 font-bold text-sm rounded-xl shadow-lg glow-amber flex items-center space-x-2 transition-all cursor-pointer">
+                    <i class="fa-solid fa-print text-lg"></i>
+                    <span>Cetak / Simpan PDF Sertifikat</span>
+                </button>
+                <button onclick="location.reload()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl border border-slate-600 flex items-center space-x-2 transition-all cursor-pointer">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Main Ulang Game</span>
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print w-full max-w-5xl mx-auto text-center text-xs text-slate-400 mt-6 pt-4 border-t border-slate-800">
+        <p>© Art Maestro Kingdom • Media Pembelajaran Seni Rupa Kelas 6 SD • Created by <span class="text-amber-300 font-bold">Giga Inovation (081329200985)</span></p>
+    </footer>
+
+    <script>
+        // WEB AUDIO API SYNTHESIZER FOR SOUND EFFECTS
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playSFX(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'correct') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.exponentialRampToValueAtTime(880, now + 0.28); // A5
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
+                osc.start(now);
+                osc.stop(now + 0.28);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, now); // A3
+                osc.frequency.exponentialRampToValueAtTime(110, now + 0.35); // A2
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(450, now);
+                gain.gain.setValueAtTime(0.08, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            } else if (type === 'victory') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, now);
+                osc.frequency.setValueAtTime(554.37, now + 0.15);
+                osc.frequency.setValueAtTime(659.25, now + 0.3);
+                osc.frequency.setValueAtTime(880, now + 0.45);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+                osc.start(now);
+                osc.stop(now + 0.8);
+            }
+        }
+
+        // GAME STATE
+        let playerState = {
+            nama: '',
+            sekolah: '',
+            currentQuestionIndex: 0,
+            score: 0,
+            combo: 0,
+            answers: []
+        };
+
+        // DATABASE 50 SOAL SENI RUPA FASE C (KELAS 6 SD) - SEMESTER 1 & SEMESTER 2
+        const questionsData = [
+            // BAB 1 SEMESTER 1: UNSUR, PRINSIP & RITME SENI RUPA (1-9)
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Siswa kelas 6 sedang menggambar pemandangan. Garis, bidang, bentuk, warna, tekstur, dan gelap terang tergolong ke dalam...",
+                options: ["Unsur-unsur Seni Rupa", "Prinsip-prinsip Seni Rupa", "Teknik Lukis Basah", "Media Cetak Tinggi"],
+                correct: 0,
+                explanation: "Unsur-unsur seni rupa adalah elemen dasar pembentuk karya seni visual, seperti garis, bidang, bentuk, warna, tekstur, dan gelap terang."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Prinsip seni rupa yang mengatur pengulangan unsur-unsur visual secara teratur sehingga menciptakan kesan gerak dinamik dinamakan...",
+                options: ["Ritme / Irama", "Proporsi", "Keseimbangan Simetris", "Tekstur Buatan"],
+                correct: 0,
+                explanation: "Ritme (irama) dalam seni rupa adalah susunan atau pengulangan unsur-unsur seni rupa secara teratur dan berulang sehingga menimbulkan efek gerakan."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Manakah contoh penerapan Ritme Repetitif (pengulangan murni) pada karya seni rupa?",
+                options: [
+                    "Barisan bentuk garis dan lingkaran yang berukuran serta berwarna sama secara konsisten",
+                    "Perubahan bentuk dari lingkaran kecil bertahap menjadi sangat besar",
+                    "Garis gelombang abstrak yang tidak beraturan",
+                    "Satu objek besar di tengah gambar"
+                ],
+                correct: 0,
+                explanation: "Ritme repetitif terjadi ketika unsur seni rupa diulang secara identik (bentuk, ukuran, dan warna sama) secara teratur."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Pengulangan unsur seni rupa di mana bentuknya berubah secara bertahap (misalnya dari ukuran kecil ke besar atau terang ke gelap) disebut ritme...",
+                options: ["Progresif", "Repetitif", "Alternatif", "Mengalir (Flowing)"],
+                correct: 0,
+                explanation: "Ritme progresif adalah ritme yang menunjukkan perubahan bertahap atau bergradasi dari kecil ke besar, terang ke gelap, atau sebaliknya."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Apabila kamu menggambar motif garis lurus dan garis lengkung yang dipasang berselang-seling (A-B-A-B), jenis ritme yang terbentuk adalah...",
+                options: ["Ritme Alternatif", "Ritme Repetitif Murni", "Ritme Progresif", "Ritme Asimetris"],
+                correct: 0,
+                explanation: "Ritme alternatif adalah pengulangan unsur seni secara berselang-seling dengan pola pergantian dua elemen atau lebih."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Ritme yang bentuknya menyerupai lekukan gelombang air atau ombak laut dikenal sebagai ritme...",
+                options: ["Mengalir (Flowing)", "Progresif", "Kaku", "Simetris"],
+                correct: 0,
+                explanation: "Ritme mengalir (flowing) menggunakan garis atau bentuk organik melengkung kontinyu seperti gerakan air atau gelombang."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Di bawah ini yang BUKAN merupakan prinsip dasar dalam menyusun karya seni rupa adalah...",
+                options: ["Fotosintesis", "Keseimbangan", "Proporsi", "Irama / Ritme"],
+                correct: 0,
+                explanation: "Fotosintesis adalah proses biologis pada tumbuhan, bukan prinsip dasar seni rupa (prinsip seni rupa meliputi kesatuan, keseimbangan, ritme, proporsi, dll)."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Kesan halus, kasar, atau licin yang terasa pada permukaan suatu benda atau karya seni rupa dinamakan...",
+                options: ["Tekstur", "Gelap Terang", "Proporsi", "Ruang"],
+                correct: 0,
+                explanation: "Tekstur adalah nilai raba dari suatu permukaan benda (apakah terasa halus, kasar, licin, atau bergelombang)."
+            },
+            {
+                bab: "Semester 1 - Bab 1: Unsur, Prinsip & Ritme Seni Rupa",
+                question: "Unsur seni rupa yang terbentuk dari hasil pertemuan beberapa garis disebut...",
+                options: ["Bidang", "Titik", "Tekstur", "Warna Sekunder"],
+                correct: 0,
+                explanation: "Pertemuan ujung-ujung garis atau batasan garis yang tertutup akan membentuk suatu Bidang (seperti segitiga, persegi, lingkaran)."
+            },
+
+            // BAB 2 SEMESTER 1: IKATAN DAN SIMPUL DALAM MAKRAME (10-18)
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Seni kerajinan tangan yang menggunakan teknik merangkai dan mengikat tali atau benang menjadi karya hias dinamakan...",
+                options: ["Makrame", "Anyaman", "Batik Tulis", "Pahat Kayu"],
+                correct: 0,
+                explanation: "Makrame adalah seni kerajinan simpul-menimpul tali/benang untuk menghasilkan berbagai bentuk hiasan atau benda pakai."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Simpul awal yang digunakan untuk mengikatkan tali makrame pada kayu gantungan atau ring besi disebut simpul...",
+                options: ["Simpul Kepala (Lark's Head Knot)", "Simpul Mati", "Simpul Spiral", "Simpul Rantai"],
+                correct: 0,
+                explanation: "Simpul Kepala (Lark's Head Knot) merupakan simpul dasar paling awal untuk mengunci tali pada tongkat atau gelang pegangan."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Apabila kamu membuat ikatan simpul makrame yang terus diputar ke satu arah secara berulang, akan terbentuk pilihan tali berbentuk pilin yaitu...",
+                options: ["Simpul Tunggal / Spiral", "Simpul Mati", "Simpul Kepala", "Simpul Kotak"],
+                correct: 0,
+                explanation: "Simpul Tunggal yang dibuat terus-menerus ke satu arah akan menghasilkan pilinan berpola tangga melingkar (spiral)."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Simpul ganda (Square Knot) dalam makrame dibuat dengan cara mengikat tali secara bergantian dari arah...",
+                options: ["Kiri dan Kanan secara berselang-seling", "Satu arah dari kanan terus", "Atas ke bawah tanpa henti", "Menggulung di tengah"],
+                correct: 0,
+                explanation: "Simpul Ganda (Square Knot) dibuat dengan mengikat tali kiri dan kanan secara bergantian sehingga hasilnya pipih dan rata."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Bahan benang/tali yang paling umum dan baik digunakan untuk membuat gantungan pot makrame adalah...",
+                options: ["Tali Katun (Cotton Rope)", "Kawat Besi", "Benang Jahit Tipis", "Pita Kertas"],
+                correct: 0,
+                explanation: "Tali katun (cotton rope) memiliki sifat lentur, kuat, tebal, dan mudah diikat sehingga ideal untuk produk makrame."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Manakah di bawah ini yang BUKAN merupakan contoh hasil karya kerajinan makrame?",
+                options: ["Patung Semen", "Gantungan Pot Tanaman", "Gantungan Kunci", "Hiasan Dinding Tali"],
+                correct: 0,
+                explanation: "Patung semen dibuat dengan teknik mencetak atau memahat, bukan dengan simpul tali makrame."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Alat pemotong utama yang wajib disiapkan saat proses pembuatan karya simpul makrame adalah...",
+                options: ["Gunting", "Cangkul", "Palu", "Kompor"],
+                correct: 0,
+                explanation: "Gunting dibutuhkan untuk memotong tali sesuai ukuran dan merapikan rumbai (fringe) pada akhir pembuatan makrame."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Sifat utama bahan yang digunakan dalam kerajinan makrame harus memiliki fleksibilitas tinggi, artinya...",
+                options: ["Lentur dan mudah diikat/disimpul", "Keras dan kaku", "Cepat mencair", "Mudah patah"],
+                correct: 0,
+                explanation: "Bahan makrame harus lentur dan fleksibel agar tali mudah dibentuk menjadi simpul-simpul yang rapi."
+            },
+            {
+                bab: "Semester 1 - Bab 2: Ikatan & Simpul Makrame",
+                question: "Simpul yang berfungsi mengunci ikatan tali paling akhir agar jalinan makrame tidak mudah terlepas dinamakan...",
+                options: ["Simpul Mati / Pengunci", "Simpul Awal", "Simpul Longgar", "Simpul Bunga"],
+                correct: 0,
+                explanation: "Simpul Mati digunakan di ujung ikatan untuk mengunci untaian tali agar tidak mudah terurai atau terlepas."
+            },
+
+            // BAB 3 SEMESTER 1: MENGANAL DAN MENGEKSPLORASI ANEKA ANYAMAN (19-26)
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Seni menyilangkan bahan pipih atau pita lembaran secara tumpang-tindih hingga membentuk lembaran karya dinamakan...",
+                options: ["Menganyam", "Menyulam", "Mengukir", "Memahat"],
+                correct: 0,
+                explanation: "Menganyam adalah teknik membuat karya kerajinan dengan menyilangkan bahan pita/pipih secara tumpang tindih teratur."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Bahan alam tradisional yang sering diiris tipis dan dihaluskan untuk dijadikan bahan anyaman bakul atau kipas adalah...",
+                options: ["Bambu dan Pandan", "Plastik PVC", "Kawat Tembaga", "Batu Candi"],
+                correct: 0,
+                explanation: "Bambu, daun pandan, rotan, dan janur adalah bahan alam populer untuk kerajinan anyaman tradisional."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Dua elemen bahan utama dalam teknik menganyam dinamakan pita...",
+                options: ["Pita Lusi (Vertikal) dan Pita Pakan (Horisontal)", "Pita Merah dan Pita Putih", "Pita Atas dan Pita Diagonal", "Pita Garis dan Pita Warna"],
+                correct: 0,
+                explanation: "Anyaman dibentuk dari pita Lusi (jalur membujur/vertikal) dan pita Pakan (jalur melintang/horisontal)."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Motif anyaman paling sederhana dengan pola 'Satu Atas, Satu Bawah' secara bergantian dinamakan...",
+                options: ["Anyaman Tunggal (Sasag)", "Anyaman Ganda Tiga", "Anyaman Cengkeh", "Anyaman Khusus"],
+                correct: 0,
+                explanation: "Anyaman tunggal (sasag) adalah pola dasar di mana pita pakan menyusup 1 pita lusi di atas dan 1 pita lusi di bawah secara bergantian."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Pola anyaman di mana pita pakan menyusup melangkahi dua pita lusi sekaligus dinamakan anyaman...",
+                options: ["Anyaman Ganda / Dua", "Anyaman Tunggal", "Anyaman Lingkaran", "Anyaman Lembut"],
+                correct: 0,
+                explanation: "Anyaman ganda (dua) dibuat dengan menumpuk/melangkahi dua pita lusi (2 atas, 2 bawah)."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Manakah contoh bahan sintetis (buatan manusia) yang dapat digunakan untuk latihan menganyam suvenir di sekolah?",
+                options: ["Pita Plastik dan Kertas Warna", "Daun Kelapa Kering", "Bambu Muda", "Rotan Segar"],
+                correct: 0,
+                explanation: "Pita plastik, kertas asturo/sidu, dan pita kain adalah contoh bahan buatan/sintetis untuk anyaman."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Manakah produk suvenir di bawah ini yang dibuat menggunakan teknik anyaman?",
+                options: ["Kipas Tradisional dan Tatakan Gelas", "Kaca Cermin", "Sendok Stainless", "Lampu Neon"],
+                correct: 0,
+                explanation: "Kipas bambu/pandan, tatakan gelas, dompet kecil, dan tempat pensil adalah contoh produk suvenir anyaman."
+            },
+            {
+                bab: "Semester 1 - Bab 3: Aneka Anyaman untuk Suvenir",
+                question: "Agar bahan bambu tidak mudah patah saat dianyam, bambu harus disayat tipis dan direndam dalam...",
+                options: ["Air agar seratnya lentur", "Minyak goreng panas", "Cat akrilik tebal", "Tepung terigu"],
+                correct: 0,
+                explanation: "Merendam ayakan bambu dalam air membuat serat bambu menjadi lebih lembap dan lentur sehingga tidak mudah patah saat dibengkokkan."
+            },
+
+            // BAB 1 SEMESTER 2: MENGGAMBAR DENGAN PRINSIP KESEIMBANGAN & PROPORSI (27-34)
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Prinsip dalam menggambar yang mengatur keserasian ukuran antara bagian objek yang satu dengan bagian objek keseluruhan dinamakan...",
+                options: ["Proporsi", "Keseimbangan", "Tekstur", "Komposisi Random"],
+                correct: 0,
+                explanation: "Proporsi adalah perbandingan ideal dan harmonis antara bagian-bagian benda yang menjadi objek gambar dengan keseluruhan benda."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Prinsip Keseimbangan (Balance) di mana unsur visual di bagian sebelah kiri dan kanan gambar terlihat sama persis seperti cermin disebut...",
+                options: ["Keseimbangan Simetris", "Keseimbangan Asimetris", "Keseimbangan Radial", "Keseimbangan Bebas"],
+                correct: 0,
+                explanation: "Keseimbangan simetris terjadi jika elemen di sisi kiri dan kanan bidang gambar memiliki bentuk, ukuran, dan bobot visual yang sama rata."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Apabila objek di sisi kiri dan kanan tidak sama bentuknya tetapi memiliki bobot visual yang tetap terasa seimbang, dinamakan...",
+                options: ["Keseimbangan Asimetris", "Keseimbangan Simetris", "Proporsi Salah", "Gradasi Warna"],
+                correct: 0,
+                explanation: "Keseimbangan asimetris letak/bentuk objek di kiri dan kanan berbeda namun tetap memberi kesan seimbang secara estetis."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Keseimbangan di mana objek-objek tersusun melingkar memusat ke titik tengah bidang dinamakan keseimbangan...",
+                options: ["Radial / Memusat", "Asimetris", "Diagonal", "Horizontal"],
+                correct: 0,
+                explanation: "Keseimbangan radial menyusun elemen gambar melingkar dan memancar dari satu titik pusat tengah."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Jika kamu menggambar cangkir teh dan teko air, proporsi ukuran yang benar adalah...",
+                options: [
+                    "Teko air digambar lebih besar daripada cangkir teh",
+                    "Cangkir teh digambar 5 kali lebih besar dari teko",
+                    "Teko dan cangkir digambar dengan ukuran yang persis sama",
+                    "Cangkir digambar memenuhi seluruh kertas"
+                ],
+                correct: 0,
+                explanation: "Sesuai kenyataan dan prinsip proporsi, ukuran teko penampung air diukurnya secara alami lebih besar dibanding cangkir."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Langkah awal paling tepat sebelum mulai mewarnai atau mengarsir objek gambar bentuk adalah...",
+                options: ["Membuat sketsa tipis garis bantu", "Langsung mengecat tebal", "Memotong kertas gambar", "Mengamplas permukaan kertas"],
+                correct: 0,
+                explanation: "Membuat sketsa tipis membantu menentukan proporsi, tata letak, dan keseimbangan objek sebelum ditimpal warna tebal."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Menggambar dengan memperhatikan kesan tebal-tipisnya bayangan untuk menciptakan efek 3 dimensi memanfaatkan unsur...",
+                options: ["Gelap Terang (Pencahayaan)", "Pita Lusi", "Tekstur Semu", "Garis Putus"],
+                correct: 0,
+                explanation: "Gelap terang (pencahayaan) memberikan efek kedalaman, bayangan, dan volume 3D pada objek gambar."
+            },
+            {
+                bab: "Semester 2 - Bab 1: Keseimbangan & Proporsi Gambar",
+                question: "Mengapa gambar manusia yang kepala dan badannya tidak proporsional terlihat aneh?",
+                options: [
+                    "Karena perbandingan ukurannya tidak serasi dengan bentuk asli manusia",
+                    "Karena warnanya terlalu cerah",
+                    "Karena kertasnya terlalu tebal",
+                    "Karena tidak memakai pensil warna"
+                ],
+                correct: 0,
+                explanation: "Proporsi yang salah membuat visualisasi gambar tampak canggung dan tidak realistis."
+            },
+
+            // BAB 2 SEMESTER 2: MENGENAL DAN MENGKREASI RAGAM HIAS (35-42)
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Karya seni rupa berupa ornamen hiasan yang dibuat untuk memperindah bidang benda atau kain disebut...",
+                options: ["Ragam Hias (Motif Hias)", "Patung Relief", "Seni Kaligrafi", "Sketsa Pensil"],
+                correct: 0,
+                explanation: "Ragam hias (ornamen) adalah bentuk karya seni rupa yang diulang-ulang untuk menghias dan memperindah suatu benda."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Ragam hias yang mengambil inspirasi bentuk dari dedaunan, bunga, dan sulur tumbuhan dinamakan ragam hias...",
+                options: ["Flora", "Fauna", "Figuratif", "Geometris"],
+                correct: 0,
+                explanation: "Ragam hias Flora menggunakan tumbuhan (bunga, daun, buah) sebagai objek visual utama."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Ragam hias yang menggunakan stilasi bentuk hewan seperti burung garuda, ikan, atau kupu-kupu dinamakan ragam hias...",
+                options: ["Fauna", "Flora", "Geometris", "Poligonal"],
+                correct: 0,
+                explanation: "Ragam hias Fauna terinspirasi dari keindahan bentuk-bentuk hewan."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Ragam hias yang tersusun dari bentuk-bentuk ilmu ukur seperti segitiga, segi empat, lingkaran, dan garis zig-zag dinamakan...",
+                options: ["Ragam Hias Geometris", "Ragam Hias Figuratif", "Ragam Hias Alam", "Ragam Hias Bebas"],
+                correct: 0,
+                explanation: "Ragam hias Geometris dikembangkan dari garis dan bentuk bidang matematika yang teratur."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Pengubahan bentuk asli alam (tumbuhan/hewan) menjadi bentuk hiasan yang indah tanpa menghilangkan identitas aslinya disebut...",
+                options: ["Stilasi (Penggayaan)", "Deformasi total", "Fotocopy", "Restorasi"],
+                correct: 0,
+                explanation: "Stilasi adalah teknik merenggangkan atau menggayakan bentuk asli objek alam menjadi ragam hias dekoratif."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Ragam hias yang objek utamanya menggunakan gambaran wujud manusia disebut ragam hias...",
+                options: ["Figuratif", "Flora", "Fauna", "Abstrak"],
+                correct: 0,
+                explanation: "Ragam hias Figuratif mengacu pada bentuk penggayaan wujud manusia (misalnya pada topeng atau ukiran suku Dayak/Asmat)."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Kain tradisional khas Indonesia yang diakui dunia dan sarat dengan motif ragam hias adalah...",
+                options: ["Kain Batik dan Tenun", "Kain Kanvas Polos", "Plastik Bubblewrap", "Kain Handuk"],
+                correct: 0,
+                explanation: "Kain Batik dan Tenun Nusantara kaya akan berbagai ragam hias flora, fauna, maupun geometris."
+            },
+            {
+                bab: "Semester 2 - Bab 2: Mengkreasi Ragam Hias Nusantara",
+                question: "Pola ragam hias yang susunan motifnya ditempatkan di bagian pinggir bidang kain atau vas bunga disebut pola...",
+                options: ["Pola Tepi", "Pola Menyudut", "Pola Memusat", "Pola Acak"],
+                correct: 0,
+                explanation: "Pola Tepi menghiasi sepanjang garis pinggiran/bingkai suatu objek karya seni."
+            },
+
+            // BAB 3 SEMESTER 2: MENGENAL SAMPAH & PEMANFAATANNYA SEBAGAI KERAJINAN (43-50)
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Sampah yang berasal dari bahan plastik, botol kaca, dan kaleng minuman sulit terurai tanah. Sampah ini tergolong sampah...",
+                options: ["Anorganik", "Organik", "Hayati", "Alami"],
+                correct: 0,
+                explanation: "Sampah Anorganik berasal dari sumber daya alam tak terbarui dan bahan sintetis yang butuh puluhan hingga ratusan tahun untuk terurai."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Pinsip 3R dalam pengelolaan sampah kerajinan terdiri dari...",
+                options: ["Reuse, Reduce, Recycle", "Read, Run, Rest", "Remove, Repair, Return", "Rinse, Repeat, Refill"],
+                correct: 0,
+                explanation: "3R singkatan dari Reduce (mengurangi sampah), Reuse (menggunakan kembali), dan Recycle (mendaur ulang sampah)."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Membuat wadah tempat pensil dari botol plastik bekas minuman merupakan contoh penerapan prinsip...",
+                options: ["Reuse (Menggunakan kembali)", "Reduce", "Reboot", "Replacement"],
+                correct: 0,
+                explanation: "Menggunakan kembali barang bekas tanpa proses melebur bahan dinamakan Reuse."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Botol plastik bekas yang dipotong dan dihias dengan cat akrilik dapat dimanfaatkan kembali menjadi...",
+                options: ["Pot Tanaman Hias / Tempat Pensil", "Batu Briket", "Kaca Jendela", "Baju Katun"],
+                correct: 0,
+                explanation: "Botol plastik bekas sangat cocok didaur ulang menjadi pot tanaman hias unik atau tempat alat tulis."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Mengolah botol plastik bekas yang dipadatkan dengan limbah plastik lunak hingga keras menjadi 'bata plastik' ramah lingkungan disebut...",
+                options: ["Ecobrick", "Kompos", "Silase", "Origami"],
+                correct: 0,
+                explanation: "Ecobrick adalah botol plastik yang diisi padat dengan sampah plastik bersih untuk dijadikan blok bangunan/meja."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Manakah di bawah ini yang merupakan sampah ORGANIK yang mudah membusuk dan terurai secara alami?",
+                options: ["Sisa dedaunan dan kulit buah", "Bungkus mi instan plastik", "Sedotan plastik", "Baterai bekas"],
+                correct: 0,
+                explanation: "Sisa dedaunan, kulit buah, dan sisa makanan adalah sampah organik yang mudah terurai menjadi pupuk kompos."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Karya seni berupa gambar atau lukisan yang dibuat dengan menempelkan potongan tutup botol bekas atau koran dinamakan...",
+                options: ["Kolase / Mozaik Daur Ulang", "Seni Pahat Batu", "Patung Perunggu", "Cetak Sablon"],
+                correct: 0,
+                explanation: "Seni Kolase/Mozaik daur ulang dibuat menempelkan variasi barang/limbah bekas pada bidang datar."
+            },
+            {
+                bab: "Semester 2 - Bab 3: Kerajinan Daur Ulang Sampah",
+                question: "Manakah manfaat utama dari mengubah sampah anorganik menjadi karya kerajinan seni rupa?",
+                options: [
+                    "Mengurangi pencemaran lingkungan sekaligus menambah nilai estetika dan ekonomi",
+                    "Menambah jumlah tumpukan sampah di sungai",
+                    "Membuat harga bahan baku melambung tinggi",
+                    "Menghabiskan energi listrik secara berlebihan"
+                ],
+                correct: 0,
+                explanation: "Kerajinan daur ulang membantu menjaga kebersihan bumi (ramah lingkungan) serta menghasilkan produk seni yang bermanfaat."
+            }
+        ];
+
+        // START GAME FUNCTION
+        function startGame(e) {
+            e.preventDefault();
+            playSFX('click');
+
+            const namaInput = document.getElementById('input-nama').value.trim();
+            const sekolahInput = document.getElementById('input-sekolah').value.trim();
+
+            if (!namaInput || !sekolahInput) return;
+
+            playerState.nama = namaInput;
+            playerState.sekolah = sekolahInput;
+            playerState.currentQuestionIndex = 0;
+            playerState.score = 0;
+            playerState.combo = 0;
+            playerState.answers = [];
+
+            // UI Switch
+            document.getElementById('screen-login').classList.add('hidden');
+            document.getElementById('screen-game').classList.remove('hidden');
+            document.getElementById('screen-game').classList.add('flex');
+
+            // Set Header Display
+            document.getElementById('display-nama').innerText = playerState.nama;
+            document.getElementById('display-sekolah').innerText = playerState.sekolah;
+
+            renderQuestion();
+        }
+
+        // RENDER QUESTION
+        function renderQuestion() {
+            const index = playerState.currentQuestionIndex;
+            const qData = questionsData[index];
+
+            // Reset UI States
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('feedback-correct-answer-container').classList.add('hidden');
+
+            // Update Progress Header
+            document.getElementById('display-soal-num').innerText = index + 1;
+            document.getElementById('display-score').innerText = playerState.score;
+            document.getElementById('display-combo').innerText = playerState.combo + 'x';
+            document.getElementById('display-bab-tag').innerHTML = `<i class="fa-solid fa-layer-group mr-1"></i> ${qData.bab}`;
+
+            // Update Progress Bar %
+            const progressPercent = ((index + 1) / questionsData.length) * 100;
+            document.getElementById('progress-bar-inner').style.width = `${progressPercent}%`;
+
+            // Set Question Text
+            document.getElementById('display-question-text').innerText = qData.question;
+
+            // Render Option Buttons
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = `option-btn w-full p-4 text-left bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 hover:border-amber-400 rounded-2xl transition-all duration-200 flex items-center space-x-3 group cursor-pointer`;
+                btn.onclick = () => checkAnswer(optIdx);
+
+                const labelCircle = document.createElement('div');
+                labelCircle.className = `w-8 h-8 rounded-xl bg-slate-900 border border-slate-600 group-hover:border-amber-400 group-hover:bg-amber-500/20 text-amber-300 font-bold text-xs flex items-center justify-center flex-shrink-0 transition-colors`;
+                labelCircle.innerText = String.fromCharCode(65 + optIdx); // A, B, C, D
+
+                const textSpan = document.createElement('span');
+                textSpan.className = `text-xs md:text-sm text-slate-200 group-hover:text-white font-medium leading-snug`;
+                textSpan.innerText = optText;
+
+                btn.appendChild(labelCircle);
+                btn.appendChild(textSpan);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        // CHECK ANSWER
+        function checkAnswer(selectedIndex) {
+            const index = playerState.currentQuestionIndex;
+            const qData = questionsData[index];
+            const isCorrect = (selectedIndex === qData.correct);
+
+            // Disable all option buttons
+            const optionBtns = document.querySelectorAll('.option-btn');
+            optionBtns.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-60', 'cursor-not-allowed');
+            });
+
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackExp = document.getElementById('feedback-explanation');
+            const correctAnswerContainer = document.getElementById('feedback-correct-answer-container');
+            const correctAnswerText = document.getElementById('feedback-correct-answer-text');
+
+            if (isCorrect) {
+                playSFX('correct');
+                playerState.combo += 1;
+                const bonusScore = 10 + (playerState.combo * 2);
+                playerState.score += bonusScore;
+
+                // Highlight chosen button green
+                optionBtns[selectedIndex].classList.remove('opacity-60', 'bg-slate-800/90', 'border-slate-700');
+                optionBtns[selectedIndex].classList.add('bg-emerald-900/90', 'border-emerald-400', 'glow-emerald');
+
+                feedbackBox.className = "p-5 rounded-2xl border transition-all duration-300 bg-emerald-950/80 border-emerald-500/60 text-emerald-100 block";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i>`;
+                feedbackTitle.innerText = `Luar Biasa! Jawabanmu Tepat (+${bonusScore} EXP)`;
+                feedbackTitle.className = "font-display font-bold text-base md:text-lg text-emerald-300";
+                
+                correctAnswerContainer.classList.add('hidden');
+                feedbackExp.innerText = qData.explanation;
+
+            } else {
+                playSFX('wrong');
+                playerState.combo = 0; // Reset combo
+
+                // Highlight wrong chosen button red
+                optionBtns[selectedIndex].classList.remove('opacity-60', 'bg-slate-800/90', 'border-slate-700');
+                optionBtns[selectedIndex].classList.add('bg-rose-950/90', 'border-rose-500');
+
+                // Highlight actual correct button green
+                optionBtns[qData.correct].classList.remove('opacity-60', 'bg-slate-800/90', 'border-slate-700');
+                optionBtns[qData.correct].classList.add('bg-emerald-900/90', 'border-emerald-400');
+
+                feedbackBox.className = "p-5 rounded-2xl border transition-all duration-300 bg-slate-900 border-rose-500/60 text-slate-100 block";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400"></i>`;
+                feedbackTitle.innerText = "Jawaban Belum Tepat, Pelajari Pembahasannya!";
+                feedbackTitle.className = "font-display font-bold text-base md:text-lg text-rose-300";
+
+                // SHOW CORRECT ANSWER CLEARLY
+                correctAnswerContainer.classList.remove('hidden');
+                correctAnswerText.innerText = `${String.fromCharCode(65 + qData.correct)}. ${qData.options[qData.correct]}`;
+
+                feedbackExp.innerText = `Penjelasan Guru Seni Rupa: ${qData.explanation}`;
+            }
+
+            // Update Header Score Realtime
+            document.getElementById('display-score').innerText = playerState.score;
+            document.getElementById('display-combo').innerText = playerState.combo + 'x';
+
+            playerState.answers.push({
+                questionIndex: index,
+                selected: selectedIndex,
+                isCorrect: isCorrect
+            });
+        }
+
+        // NEXT QUESTION OR FINISH
+        function nextQuestion() {
+            playSFX('click');
+            playerState.currentQuestionIndex += 1;
+
+            if (playerState.currentQuestionIndex < questionsData.length) {
+                renderQuestion();
+            } else {
+                finishGame();
+            }
+        }
+
+        // FINISH GAME & GENERATE CERTIFICATE
+        function finishGame() {
+            playSFX('victory');
+
+            // Trigger Confetti Celebration
+            confetti({
+                particleCount: 140,
+                spread: 90,
+                origin: { y: 0.6 }
+            });
+
+            // UI Switch
+            document.getElementById('screen-game').classList.add('hidden');
+            document.getElementById('screen-certificate').classList.remove('hidden');
+            document.getElementById('screen-certificate').classList.add('flex');
+
+            // Populate Certificate Data
+            document.getElementById('cert-nama').innerText = playerState.nama.toUpperCase();
+            document.getElementById('cert-sekolah').innerText = playerState.sekolah;
+            document.getElementById('cert-skor').innerText = `${playerState.score} EXP`;
+
+            // Calculate Grade Predicate
+            let predikat = "SENIMAN KREATIF FASE C";
+            if (playerState.score >= 500) {
+                predikat = "MAESTRO SENI RUPA CUMLAUDE 🏆";
+            } else if (playerState.score >= 380) {
+                predikat = "SENIMAN HANDAL KELAS 6 🌟";
+            } else {
+                predikat = "PELUKIS KREATIF NUSANTARA 🎨";
+            }
+            document.getElementById('cert-predikat').innerText = predikat;
+
+            // Date Formatting
+            const today = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('cert-tanggal').innerText = `Tanggal: ${today.toLocaleDateString('id-ID', dateOptions)}`;
+        }
+    </script>
+</body>
+</html>
